@@ -1,0 +1,47 @@
+.demon-wedge {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 115px;
+    height: 145px;
+    border-radius: 0.75rem;
+    flex-direction: column;
+    border: 2px solid rgb(156, 156, 156);
+    user-select: none;
+}
+
+.demon-wedge.equipado {
+    top: -2px;
+    left: -2px;
+}
+
+.demon-wedge.tier4 {
+    background: linear-gradient(
+        rgb(63, 63, 63) 0%,
+        rgb(203, 144, 230) 30%,
+        rgb(255, 255, 255)
+    );
+}
+
+.demon-wedge p {
+    margin: 0px;
+    padding-bottom: 2px;
+    position: absolute;
+    display: block;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.479);
+    color: white;
+    width: 100%;
+    text-align: center;
+    border-radius: 0 0 calc(0.75rem - 2px) calc(0.75rem - 2px);
+    font-size: 15px;
+}
+
+.demon-wedge img {
+    position: relative;
+    object-fit: contain;
+    scale: calc(53%);
+    padding-bottom: 25px;
+    pointer-events: none;
+}

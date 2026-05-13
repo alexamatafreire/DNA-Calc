@@ -1,0 +1,56 @@
+{
+    "1": {
+        "titulo" : "Convenanter's",
+        "nombre" : "Scorch",
+        "imagen": "T_Mod_Mephisto01_Orange.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "ATK" : 0.96
+        }
+    },
+    "2": {
+        "titulo" : "Convenanter's",
+        "nombre" : "Nirvana Volition",
+        "imagen": "T_Mod_Mephisto01_Orange.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "HP" : 0.24,
+            "Skill Intensity" : 0.48
+        }
+    },
+    "3": {
+        "titulo" : "Griffin's Skylume",
+        "nombre" : "Wildfire",
+        "imagen": "T_Mod_Griffin01_Orange.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : false,
+        "tipo" : "lumino",
+        "buffs" : {
+            "Elemental ATK" : 0.18,
+            "Skill Intensity" : 0.18,
+            "Skill Range": 0.18
+        }
+    },
+    "4": {
+        "titulo" : "Typhon's Prime",
+        "nombre" : "Morale",
+        "imagen": "T_Mod_Typhon01_Orange.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : false,
+        "tipo" : "lumino",
+        "buffs" : {
+            "ATK" : 0.75,
+            "HP" : 0.75,
+            "DEF": 0.75,
+            "Morale": 0.18
+        }
+    }
+}

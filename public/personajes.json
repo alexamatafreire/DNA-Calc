@@ -1,0 +1,613 @@
+{
+    "Fushu": {
+        "tipo": "hidro",
+        "ATK": 23,
+        "HP": 105,
+        "Shield": 105,
+        "DEF": 315,
+        "sanidadbase": 150,
+        "habilidades": {
+            "e" : {
+                "nombre" : "Subcelestial Solace",
+                "tipo" : "Summon",
+                "descripcion" : ["Subcelestial Solace", "Summons 1 [Yunchi]. A Maximum of 2 [Yunchi] can exist at the same time.", "Summon: Yunchi", "Inherits 100% of Fushu's stats and deals Hydro Damage to the nearest 5 enemies once every second. [Yunchi] restores HP and Sanity for nearby teammates once every 3s."],
+                "estadisticas" : [
+                    {
+                        "nombre": "misc",
+                        "lineas": [
+                            {
+                                "nombre" : "Sanity Cost",
+                                "patron" : "%n1",
+                                "valor" : [34],
+                                "daño" : false,
+                                "escala" : [["Skill Efficiency", -1]]
+                            },
+                            {
+                                "nombre" : "Summon DMG",
+                                "patron" : "%p1",
+                                "valor" : [[2.26, 6.67]],
+                                "daño" : true,
+                                "calcs" : [{"value": [2.26, 6.67], "scale": ["Skill Intensity", "ATK"]}],
+                                "escala" : [["Skill Intensity", 1]]
+                            },
+                            {
+                                "nombre" : "Summon Effect Radius",
+                                "patron" : "%m1",
+                                "valor" : [10],
+                                "daño" : false,
+                                "escala" : [["Skill Range", 1]]
+                            },
+                            {
+                                "nombre" : "Summon Duration",
+                                "patron" : "%s1",
+                                "valor" : [10],
+                                "daño" : false,
+                                "escala" : [["Skill Duration", 1]]
+                            },
+                            {
+                                "nombre" : "Summon Healing",
+                                "patron" : "%p1 ATK + %n2",
+                                "valor" : [[0.006, 0.015], 5],
+                                "daño" : true,
+                                "calcs" : [{"value": [0.006, 0.015], "scale": ["Skill Intensity", "ATK"]}, {"value": 5, "scale": ["Skill Intensity"]}],
+                                "escala" : [["Skill Intensity", 1]]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "buffs": [
+            {
+                "nombre": "[Nine-Needle Therapy] Skill Intensity Increase",
+                "desc": "Increases Skill Intensity by a percentage of Fushu's Skill Intensity",
+                "hasStacks": true
+            }
+        ]
+    },
+    "Lady Nifle": {
+        "tipo" : "lumino",
+        "ATK" : 21,
+        "HP" : 105,
+        "Shield" : 105,
+        "DEF" : 255,
+        "Sanity" : 180,
+        "habilidades" : {
+            "e" : {
+                "nombre" : "Lunar Hunt",
+                "tipo" : "DMG",
+                "descripcion" : ["Lunar Hunt", "Creates 1 [Lunar Hunt] and replaces this skill with [Solar Eclipse]. [Lunar Hunt]: Deals Umbro Damage to all enemies within range upon spawn and reduces their Movement Speed.", "Solar Eclipse", "Creates 1 [Solar Eclipse] and replaces this skill with [Lunar Hunt]. [Solar Eclipse]: Deals Lumino Damage to all enemies within range when summoned and reduces their ATK."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc",
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%n1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : [["Skill Efficiency", -1]]
+                        }]
+                    },
+                    {   
+                        "nombre" : "Lunar Hunt", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[11.32, 34]],
+                            "daño" : true,
+                            "calcs" : [{"value": [11.32, 34], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : [["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease",
+                            "patron" : "%p1",
+                            "valor" : [0.3],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    },
+                    {
+                        "nombre" : "Solar Eclipse", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[11.32, 34]],
+                            "daño" : true,
+                            "calcs" : [{"value": [11.32, 34], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : [["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "ATK Reduced",
+                            "patron" : "%p1",
+                            "valor" : [0.25],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "ATK Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    }
+                ]
+            },
+            "q" : {
+                "nombre" : "Misty Sea Requiem",
+                "tipo" : "Buff",
+                "descripcion" : ["Misty Sea Requiem","Enters [Funeral Rite] status. Upon entry, if the user's Skill Range exceeds 100%, the excess is converted into Skill Damage at a fixed ratio, and Skill Range is reduced to 100% for the duration.\nWhile under [Funeral Rite], gains Trigger Probability Increase for ranged weapons; [Lunar Hunt] and [Solar Eclipse] cost no sanity; [Lunar Hunt] pulls enemies toward its centre; [Solar Eclipse] deals increased damage. [Funeral Rite] ends after a set duration or after casting a total of 6 [Lunar Hunt] and / or [Solar Eclipse]."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%n1",
+                            "valor" : [120],
+                            "daño" : false,
+                            "escala" : [["Skill Efficiency", -1]]
+                        },
+                        {
+                            "nombre" : "Trigger Probability Boost",
+                            "patron" : "%p1",
+                            "valor" : [0.6],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "[Funeral Rite] Duration",
+                            "patron" : "%s1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : [["Skill Duration", 1]]
+                        },
+                        {
+                            "nombre" : "[Funeral Rite] Skill Range Conversion Percentage",
+                            "patron" : "%p1",
+                            "valor" : [1],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Enhanced [Solar Eclipse] DMG Radius",
+                            "patron" : "%m1",
+                            "valor" : [6],
+                            "daño" : false,
+                            "escala" : [["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "Enhanced [Solar Eclipse] DMG",
+                            "patron" : "%p1",
+                            "valor" : [[22.64, 68]],
+                            "daño" : true,
+                            "calcs" : [{"value": [22.64, 68], "scale" : ["Skill Intensity", "Skill Range", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1], ["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "Enhanced [Lunar Hunt] DMG Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : [["Skill Range", 1]]
+                        }]
+                    }
+                ]
+            },
+            "pasiva" : {
+                "nombre" : "Interwoven Cries",
+                "tipo" : "Passive",
+                "descripcion" : ["Interwoven Cries", "Based on user's Trigger Probability for ranged weapons, casting [Lunar Hunt] has a chance to also spawn [Solar Eclipse] at the same location, which in turn may spawn another [Lunar Hunt]. [Solar Eclipse] and [Lunar Hunt] summoned this way will not be enhanced by [Misty Sea Requiem]."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Effect Trigger Probability",
+                            "patron" : "%p1 Ranged weapon trigger probability",
+                            "valor" : [[0.14, 0.5]],
+                            "daño" : false,
+                            "escala" : [["Ranged Trigger Probability", 1]]
+                        },
+                        {
+                            "nombre" : "Effect Trigger Probability Cap",
+                            "patron" : "%p1",
+                            "valor" : [0.5],
+                            "daño" : false,
+                            "escala" : []
+                        }
+                        ]
+                    }
+                ]
+            }
+        },
+        "buffs" : [
+            {
+                "nombre" : "Intron 1",
+                "stacks" : false,
+                "desc" : "Increases [Interwoven Cries] Effect Trigger Probability by 15% and its max Trigger Probability to 65%.",
+                "target" : "self"
+            }
+        ]
+    },
+    "Lisbell": {
+        "tipo" : "lumino",
+        "atkbase" : 21,
+        "hpbase" : 105,
+        "escudobase" : 105,
+        "defbase" : 255,
+        "sanidadbase" : 180,
+        "habilidades" : {
+            "e" : {
+                "nombre" : "Lunar Hunt LISBELL",
+                "tipo" : "DMG",
+                "descripcion" : ["Lunar Hunt", "Creates 1 [Lunar Hunt] and replaces this skill with [Solar Eclipse]. [Lunar Hunt]: Deals Umbro Damage to all enemies within range upon spawn and reduces their Movement Speed.", "Solar Eclipse", "Creates 1 [Solar Eclipse] and replaces this skill with [Lunar Hunt]. [Solar Eclipse]: Deals Lumino Damage to all enemies within range when summoned and reduces their ATK."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc",
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%n1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : ["Skill Efficiency"]
+                        }]
+                    },
+                    {   
+                        "nombre" : "Lunar Hunt", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[11.32, 34]],
+                            "daño" : "ATK",
+                            "escala" : ["Skill Intensity"]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease",
+                            "patron" : "%p1",
+                            "valor" : [0.3],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    },
+                    {
+                        "nombre" : "Solar Eclipse", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[11.32, 34]],
+                            "daño" : "ATK",
+                            "escala" : ["Skill Intensity"]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        },
+                        {
+                            "nombre" : "ATK Reduced",
+                            "patron" : "%p1",
+                            "valor" : [0.25],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "ATK Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    }
+                ]
+            },
+            "q" : {
+                "nombre" : "Misty Sea Requiem",
+                "tipo" : "Buff",
+                "descripcion" : ["Misty Sea Requiem","Enters [Funeral Rite] status. Upon entry, if the user's Skill Range exceeds 100%, the excess is converted into Skill Damage at a fixed ratio, and Skill Range is reduced to 100% for the duration.\nWhile under [Funeral Rite], gains Trigger Probability Increase for ranged weapons; [Lunar Hunt] and [Solar Eclipse] cost no sanity; [Lunar Hunt] pulls enemies toward its centre; [Solar Eclipse] deals increased damage. [Funeral Rite] ends after a set duration or after casting a total of 6 [Lunar Hunt] and / or [Solar Eclipse]."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%n1",
+                            "valor" : [120],
+                            "daño" : false,
+                            "escala" : ["Skill Efficiency"]
+                        },
+                        {
+                            "nombre" : "Trigger Probability Boost",
+                            "patron" : "%p1",
+                            "valor" : [0.6],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "[Funeral Rite] Duration",
+                            "patron" : "%s1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : ["Skill Duration"]
+                        },
+                        {
+                            "nombre" : "[Funeral Rite] Skill Range Conversion Percentage",
+                            "patron" : "%p1",
+                            "valor" : [1],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Enhanced [Solar Eclipse] DMG Radius",
+                            "patron" : "%m1",
+                            "valor" : [6],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        },
+                        {
+                            "nombre" : "Enhanced [Solar Eclipse] DMG Boost Percentage",
+                            "patron" : "%p1",
+                            "valor" : [[22.64, 68]],
+                            "daño" : "ATK",
+                            "escala" : ["Skill Intensity"]
+                        },
+                        {
+                            "nombre" : "Enhanced [Lunar Hunt] DMG Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        }]
+                    }
+                ]
+            },
+            "pasiva" : {
+                "nombre" : "Interwoven Cries",
+                "tipo" : "Passive",
+                "descripcion" : ["Interwoven Cries", "Based on user's Trigger Probability for ranged weapons, casting [Lunar Hunt] has a chance to also spawn [Solar Eclipse] at the same location, which in turn may spawn another [Lunar Hunt]. [Solar Eclipse] and [Lunar Hunt] summoned this way will not be enhanced by [Misty Sea Requiem]."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Effect Trigger Probability",
+                            "patron" : "%p1 Ranged weapon trigger probability",
+                            "valor" : [[0.14, 0.5]],
+                            "daño" : false,
+                            "escala" : ["Ranged Trigger Probability"]
+                        },
+                        {
+                            "nombre" : "Effect Trigger Probability Cap",
+                            "patron" : "%p1",
+                            "valor" : [0.5],
+                            "daño" : false,
+                            "escala" : []
+                        }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "Su Yi": {
+        "tipo" : "lumino",
+        "atkbase" : 21,
+        "hpbase" : 105,
+        "escudobase" : 105,
+        "defbase" : 255,
+        "sanidadbase" : 180,
+        "habilidades" : {
+            "e" : {
+                "nombre" : "Lunar Hunt SU YI",
+                "tipo" : "DMG",
+                "descripcion" : ["Lunar Hunt", "Creates 1 [Lunar Hunt] and replaces this skill with [Solar Eclipse]. [Lunar Hunt]: Deals Umbro Damage to all enemies within range upon spawn and reduces their Movement Speed.", "Solar Eclipse", "Creates 1 [Solar Eclipse] and replaces this skill with [Lunar Hunt]. [Solar Eclipse]: Deals Lumino Damage to all enemies within range when summoned and reduces their ATK."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc",
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%n1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : ["Skill Efficiency"]
+                        }]
+                    },
+                    {   
+                        "nombre" : "Lunar Hunt", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[11.32, 34]],
+                            "daño" : "ATK",
+                            "escala" : ["Skill Intensity"]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease",
+                            "patron" : "%p1",
+                            "valor" : [0.3],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    },
+                    {
+                        "nombre" : "Solar Eclipse", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[11.32, 34]],
+                            "daño" : "ATK",
+                            "escala" : ["Skill Intensity"]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        },
+                        {
+                            "nombre" : "ATK Reduced",
+                            "patron" : "%p1",
+                            "valor" : [0.25],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "ATK Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [3],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    }
+                ]
+            },
+            "q" : {
+                "nombre" : "Misty Sea Requiem",
+                "tipo" : "Buff",
+                "descripcion" : ["Misty Sea Requiem","Enters [Funeral Rite] status. Upon entry, if the user's Skill Range exceeds 100%, the excess is converted into Skill Damage at a fixed ratio, and Skill Range is reduced to 100% for the duration.\nWhile under [Funeral Rite], gains Trigger Probability Increase for ranged weapons; [Lunar Hunt] and [Solar Eclipse] cost no sanity; [Lunar Hunt] pulls enemies toward its centre; [Solar Eclipse] deals increased damage. [Funeral Rite] ends after a set duration or after casting a total of 6 [Lunar Hunt] and / or [Solar Eclipse]."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%n1",
+                            "valor" : [120],
+                            "daño" : false,
+                            "escala" : ["Skill Efficiency"]
+                        },
+                        {
+                            "nombre" : "Trigger Probability Boost",
+                            "patron" : "%p1",
+                            "valor" : [0.6],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "[Funeral Rite] Duration",
+                            "patron" : "%s1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : ["Skill Duration"]
+                        },
+                        {
+                            "nombre" : "[Funeral Rite] Skill Range Conversion Percentage",
+                            "patron" : "%p1",
+                            "valor" : [1],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Enhanced [Solar Eclipse] DMG Radius",
+                            "patron" : "%m1",
+                            "valor" : [6],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        },
+                        {
+                            "nombre" : "Enhanced [Solar Eclipse] DMG Boost Percentage",
+                            "patron" : "%p1",
+                            "valor" : [[22.64, 68]],
+                            "daño" : "ATK",
+                            "escala" : ["Skill Intensity"]
+                        },
+                        {
+                            "nombre" : "Enhanced [Lunar Hunt] DMG Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : ["Skill Range"]
+                        }]
+                    }
+                ]
+            },
+            "pasiva" : {
+                "nombre" : "Interwoven Cries",
+                "tipo" : "Passive",
+                "descripcion" : ["Interwoven Cries", "Based on user's Trigger Probability for ranged weapons, casting [Lunar Hunt] has a chance to also spawn [Solar Eclipse] at the same location, which in turn may spawn another [Lunar Hunt]. [Solar Eclipse] and [Lunar Hunt] summoned this way will not be enhanced by [Misty Sea Requiem]."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Effect Trigger Probability",
+                            "patron" : "%p1 Ranged weapon trigger probability",
+                            "valor" : [[0.14, 0.5]],
+                            "daño" : false,
+                            "escala" : ["Ranged Trigger Probability"]
+                        },
+                        {
+                            "nombre" : "Effect Trigger Probability Cap",
+                            "patron" : "%p1",
+                            "valor" : [0.5],
+                            "daño" : false,
+                            "escala" : []
+                        }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.div-info {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    height: 18px;
+    width: 18px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.popover {
+    padding: 5px;
+    padding-bottom: 0px;
+}
