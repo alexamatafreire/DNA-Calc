@@ -21,7 +21,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
     <div className='izquierda'>
       <h4>Character</h4>
       <div className="character-wrapper">
-        <img src={`/fotos_personajes/completas/${personajeSeleccionadoMain}.png`} className='rounded-circle border border-warning' width={100} height={100} alt="" />
+        <img src={`/fotos_personajes/completas/${personajeSeleccionadoMain}.png`} className='rounded-circle border border-2 border-dark' width={100} height={100} alt="" />
         <div className="character-selector-level">
           <select className="form-select border-2" name="personajeSelec" value={personajeSeleccionadoMain} onChange={e => setPersonajeSeleccionadoMain(e.target.value)}>
             {Object.entries(personajes).sort().map(([nombre]) => (
@@ -41,13 +41,13 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       <h4>Skills</h4>
       <div className="skills-wrapper">
         <div className="titulo-slider">E</div>
-        <input type="range" className='level-slider' name="nivelE" min={1} max={10} defaultValue={nivelEMain} onChange={e => setNivelEMain(e.target.value)}/>
+        <input type="range" className='level-slider' name="nivelE" min={1} max={12} defaultValue={nivelEMain} onChange={e => setNivelEMain(e.target.value)}/>
         <div className='numero-slider'>{nivelEMain}</div>
         <div className="titulo-slider">Q</div>
-        <input type="range" className='level-slider' name="nivelQ" min={1} max={10} defaultValue={nivelQMain} onChange={e => setNivelQMain(e.target.value)}/>
+        <input type="range" className='level-slider' name="nivelQ" min={1} max={12} defaultValue={nivelQMain} onChange={e => setNivelQMain(e.target.value)}/>
         <div className='numero-slider'>{nivelQMain}</div>
         <div className="titulo-slider">Passive</div>
-        <input type="range" className='level-slider' name="nivelPasiva" min={1} max={10} defaultValue={nivelPasivaMain} onChange={e => setNivelPasivaMain(e.target.value)}/>
+        <input type="range" className='level-slider' name="nivelPasiva" min={1} max={12} defaultValue={nivelPasivaMain} onChange={e => setNivelPasivaMain(e.target.value)}/>
         <div className='numero-slider'>{nivelPasivaMain}</div>
       </div>
       <br />
@@ -55,7 +55,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       <DemonWedges wedgesList={wedgesList} slots={slots} setSlots={setSlots} ></DemonWedges>
       <br />
       <h4>Buffs</h4>
-      {personajes[personajeSeleccionadoMain] ? personajes[personajeSeleccionadoMain].buffs.map((buff) => (
+      {personajes[personajeSeleccionadoMain] && personajes[personajeSeleccionadoMain].buffs ? personajes[personajeSeleccionadoMain].buffs.map((buff) => (
         <div key={`${personajeSeleccionadoMain}-${buff.nombre}`} className="tarjeta-buffs">
           <div className="checkbox-titulo">
             <input type="checkbox" className="form-check-input border-dark"/>

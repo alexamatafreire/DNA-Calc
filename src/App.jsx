@@ -1,6 +1,6 @@
 import './App.css'
 import React, { use, useState, useEffect, createContext, useContext } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import DamageTable from './components/DamageTable';
 import DemonWedges from './components/DemonWedges';
 import PersonajePrincipal from './components/pages/PersonajePrincipal';
@@ -35,6 +35,10 @@ function App() {
   }
   fetchData();
   }, []);
+  const navStyle = ({isActive}) => ({
+    color: isActive ? "#FFF" : "#000",
+    backgroundColor : isActive ? "#222" : "transparent"
+  });
 
   const [mejoras, setMejoras] = useState({
     "ATK": [],
@@ -47,17 +51,17 @@ function App() {
         <div className="container barra-navegacion">
           <nav className="d-flex justify-content-center py-3">
             <ul className="nav nav-pills">
-              <li className={`nav-item rounded-2 ${window.location.pathname == "/" ? "current-nav" : ""}`}>
-                <Link to="/" className="nav-link text-black">Main</Link>
+              <li className={`nav-item rounded-2}`}>
+                <NavLink to="/" style={navStyle} className="nav-link">Main</NavLink>
               </li>
-              <li className={`nav-item rounded-2 ${window.location.pathname == "/arma" ? "current-nav" : ""}`}>
-                <Link to="/arma" className="nav-link text-black">Melee</Link>
-              </li>
-              <li className="nav-item rounded-2">
-                <Link className='nav-link text-black'>Ranged</Link>
+              <li className={`nav-item rounded-2}`}>
+                <NavLink to="/arma" style={navStyle} className="nav-link">Melee</NavLink>
               </li>
               <li className="nav-item rounded-2">
-                <Link className='nav-link text-black'>Team</Link>
+                <NavLink style={navStyle} className='nav-link'>Ranged</NavLink>
+              </li>
+              <li className="nav-item rounded-2">
+                <NavLink style={navStyle} className='nav-link'>Team</NavLink>
               </li>
             </ul>
           </nav>

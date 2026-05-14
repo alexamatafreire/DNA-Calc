@@ -49,18 +49,6 @@ body {
   background-color: rgb(240, 240, 240);
 }
 
-.current-nav {
-  background-color: rgb(29, 29, 29);
-}
-
-.current-nav:hover {
-  background-color: rgb(92, 92, 92);
-}
-
-.current-nav .nav-link {
-  color: white !important;
-}
-
 .level-slider {
   appearance: none; 
   width: 100%;
