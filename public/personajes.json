@@ -227,6 +227,7 @@
                         "nombre" : "misc", 
                         "lineas" : [
                         {
+                            "id" : "InterwovenCriesEffectTriggerProbability",
                             "nombre" : "Effect Trigger Probability",
                             "patron" : "%p1 Ranged weapon trigger probability",
                             "valor" : [[0.14, 0.5]],
@@ -234,6 +235,7 @@
                             "escala" : [["Ranged Trigger Probability", 1]]
                         },
                         {
+                            "id" : "InterwovenCriesEffectTriggerProbabilityCap",
                             "nombre" : "Effect Trigger Probability Cap",
                             "patron" : "%p1",
                             "valor" : [0.5],
@@ -250,7 +252,14 @@
                 "nombre" : "Intron 1",
                 "stacks" : false,
                 "desc" : "Increases [Interwoven Cries] Effect Trigger Probability by 15% and its max Trigger Probability to 65%.",
-                "target" : "self"
+                "target" : "self",
+                "effects" : [
+                    {
+                        "target" : ["InterwovenCriesEffectTriggerProbability", "InterwovenCriesEffectTriggerProbabilityCap"],
+                        "type" : "add",
+                        "value" : 0.15
+                    }
+                ]
             }
         ]
     },

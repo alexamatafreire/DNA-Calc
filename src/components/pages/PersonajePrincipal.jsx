@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import DemonWedges from '../DemonWedges';
 import { useWedgeStore } from '../../stores/wedgesStore';
 import { useCharacterStore } from '../../stores/characterStore';
@@ -16,6 +17,12 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
   const setNivelQMain = useCharacterStore((state) => state.setMainCharQLVL);
   const nivelPasivaMain = useCharacterStore((state) => state.mainCharPassiveLVL);
   const setNivelPasivaMain = useCharacterStore((state) => state.setMainCharPassiveLVL);
+  const listaBuffs = useCharacterStore((state) => state.listaBuffs);
+  const setListaBuffs = useCharacterStore((state) => state.setListaBuffs);
+
+  const handleBuffs = (e) => {
+    setListaBuffs(e.target.checked ? [...listaBuffs, e.target.name] : listaBuffs.filter((buff) => buff !== e.target.name));
+  }
   
   return (
     <div className='izquierda'>
@@ -58,7 +65,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       {personajes[personajeSeleccionadoMain] && personajes[personajeSeleccionadoMain].buffs ? personajes[personajeSeleccionadoMain].buffs.map((buff) => (
         <div key={`${personajeSeleccionadoMain}-${buff.nombre}`} className="tarjeta-buffs">
           <div className="checkbox-titulo">
-            <input type="checkbox" className="form-check-input border-dark"/>
+            <input type="checkbox" className="form-check-input border-dark" name={buff.nombre} onChange={handleBuffs}/>
             <h5>{buff.nombre}</h5>
           </div>
           <p>{buff.desc}</p>
