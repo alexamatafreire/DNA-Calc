@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import DamageTable from './components/DamageTable';
 import DemonWedges from './components/DemonWedges';
 import PersonajePrincipal from './components/pages/PersonajePrincipal';
-import Arma from './components/pages/Arma';
+import ArmaMelee from './components/pages/ArmaMelee';
+import ArmaDistancia from './components/pages/ArmaDistancia';
+import Equipo from './components/pages/Equipo'
 import { useWedgeStore } from './stores/wedgesStore';
 import { calcularStats } from './utils/calcularstats';
 
@@ -55,13 +57,13 @@ function App() {
                 <NavLink to="/" style={navStyle} className="nav-link">Main</NavLink>
               </li>
               <li className={`nav-item rounded-2}`}>
-                <NavLink to="/arma" style={navStyle} className="nav-link">Melee</NavLink>
+                <NavLink to="/melee" style={navStyle} className="nav-link">Melee</NavLink>
               </li>
               <li className="nav-item rounded-2">
-                <NavLink style={navStyle} className='nav-link'>Ranged</NavLink>
+                <NavLink to="/ranged" style={navStyle} className='nav-link'>Ranged</NavLink>
               </li>
               <li className="nav-item rounded-2">
-                <NavLink style={navStyle} className='nav-link'>Team</NavLink>
+                <NavLink to="/team" style={navStyle} className='nav-link'>Team</NavLink>
               </li>
             </ul>
           </nav>
@@ -69,7 +71,9 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<PersonajePrincipal wedgesList={wedgesList} personajes={personajes} />} />
-        <Route path='/arma' element={<Arma/>} />
+        <Route path='/melee' element={<ArmaMelee/>} />
+        <Route path='/ranged' element={<ArmaDistancia/>} />
+        <Route path='/team' element={<Equipo/>} />
       </Routes>
       <div className="derecha">
         <DamageTable wedgesList={wedgesList} personajes={personajes} ></DamageTable>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Arma = ({setPersonajeSeleccionado}) => {
+const ArmaMelee = ({setPersonajeSeleccionado}) => {
   return (
     <div className='izquierda'>
       <p>Arma:</p>
@@ -12,4 +12,4 @@ const Arma = ({setPersonajeSeleccionado}) => {
   )
 }
 
-export default Arma
+export default ArmaMelee
