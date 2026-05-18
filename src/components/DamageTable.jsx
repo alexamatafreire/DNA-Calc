@@ -13,21 +13,49 @@ const DamageTable = ({wedgesList, personajes}) => {
     const nivelEMain = useCharacterStore((state) => state.mainCharELVL);
     const nivelQMain = useCharacterStore((state) => state.mainCharQLVL);
     const nivelPasivaMain = useCharacterStore((state) => state.mainCharPassiveLVL);
-    const mejoras = calcularStats(wedgesList);
-    listaBuffs = useCharacterStore((state) => state.listaBuffs)
+    const mejoras = calcularStats(wedgesList, personajes);
+    listaBuffs = useCharacterStore((state) => state.listaBuffs);
     const statsPersonaje = {
-        "ATK": (personaje?.ATK * nivelMult[nivelMain-1] * (1+(mejoras["ATK"] ? mejoras["ATK"] : 0))) + (mejoras["Flat ATK"] ? mejoras["Flat ATK"] : 0),
-        "HP": personaje?.HP * nivelMult[nivelMain-1] * (1+(mejoras["HP"] ? mejoras["HP"] : 0)),
-        "Sanity" : personaje?.Sanity * (1+(mejoras["Sanity"] ? mejoras["Sanity"] : 0)),
+        "ATK": ((personaje?.ATK * nivelMult[nivelMain-1] * (1+(mejoras["ATK"] ?? 0))) + (mejoras["Flat ATK"] ?? 0)) * (1+(mejoras["Elemental ATK"] ?? 0)),
+        "HP": personaje?.HP * nivelMult[nivelMain-1] * (1+(mejoras["HP"] ?? 0)),
+        "Sanity" : personaje?.Sanity * (1+(mejoras["Sanity"] ?? 0)),
         "Skill Intensity": mejoras["Skill Intensity"],
         "Morale": mejoras["Morale"],
         "Skill Range": mejoras["Skill Range"],
-        "Elemental ATK": mejoras["Elemental ATK"],
         "Current HP": 1
     }
     const niveles = {"e" : nivelEMain, "q" : nivelQMain, "pasiva" : nivelPasivaMain};
     return (
         <div className='damage-table'>
+            <div className='head-habilidades'>
+                <div>Stats</div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stat</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ATK</td>
+                        <td>{Math.round(statsPersonaje["ATK"]*100)/100}</td>
+                    </tr>
+                    <tr>
+                        <td>HP</td>
+                        <td>{Math.round(statsPersonaje["HP"])}</td>
+                    </tr>
+                    <tr>
+                        <td>Sanity</td>
+                        <td>{Math.round(statsPersonaje["Sanity"])}</td>
+                    </tr>
+                    <tr>
+                        <td>Skill Intensity</td>
+                        <td>{Math.round((statsPersonaje["Skill Intensity"]?? 0)*100+100)}%</td>
+                    </tr>
+                </tbody>
+            </table>
             {personaje && Object.entries(personaje.habilidades).map(([key, habilidad]) => (
                 <React.Fragment key={`tablaHabilidades-${key}`}>
                 <div className='head-habilidades'>
@@ -167,7 +195,7 @@ function calculosDañoHeal(linea, stats, nivel) {
 
 function calcularDañoPorcentaje(porcentaje, statEscala, stats) {
     // Usa la formula de calculo de daño propia del juego
-    let baseDMG = (porcentaje*(1+getStat(stats, "Skill DMG")))*getStat(stats, statEscala)*(1+getStat(stats, "Elemental ATK"));
+    let baseDMG = (porcentaje*(1+getStat(stats, "Skill DMG")))*getStat(stats, statEscala);
     let enemyDEFMult = (300+getStat(stats, "Level Diff"))/(300+getStat(stats, "Level Diff")+getStat(stats, "Enemy DEF"));
     let enemyRESMult = (1+getStat(stats, "PEN"))*(1+getStat(stats, "RES Shred"))*(1+getStat(stats, "Elem Advantage"));
     let resolveMult = 1+(getStat(stats, "Resolve")*2*((1-getStat(stats, "Current HP"))*2+1)*(1-getStat(stats, "Current HP")));

@@ -5,6 +5,8 @@ import HuecoWedge from './HuecoWedge';
 import './DemonWedges.css';
 
 const DemonWedges = ({wedgesList, slots, setSlots}) => {
+    const sortedWedges = Object.fromEntries(Object.entries(wedgesList).sort((a,b) => b[1]["tier"] - a[1]["tier"]));
+
     return (
         <div className="wedges-container">
             <DragDropProvider
@@ -31,7 +33,7 @@ const DemonWedges = ({wedgesList, slots, setSlots}) => {
                     ))}
                 </div>
                 <div className="wedges">
-                    {wedgesList && Object.entries(wedgesList).map(([id, wedge]) => (
+                    {sortedWedges && Object.entries(sortedWedges).map(([id, wedge]) => (
                         <DemonWedge id={id} key={id} wedge={id} nombre={wedge.nombre} imagen={wedge.imagen} tier={`tier${wedge.tier}`}/>
                     ))}
                 </div>

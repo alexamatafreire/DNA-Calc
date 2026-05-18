@@ -62,16 +62,19 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       <DemonWedges wedgesList={wedgesList} slots={slots} setSlots={setSlots} ></DemonWedges>
       <br />
       <h4>Buffs</h4>
-      {personajes[personajeSeleccionadoMain] && personajes[personajeSeleccionadoMain].buffs ? personajes[personajeSeleccionadoMain].buffs.map((buff) => (
-        <div key={`${personajeSeleccionadoMain}-${buff.nombre}`} className="tarjeta-buffs">
-          <div className="checkbox-titulo">
-            <input type="checkbox" className="form-check-input border-dark" name={buff.nombre} onChange={handleBuffs}/>
-            <h5>{buff.nombre}</h5>
+      <div className='lista-buffs'>
+        {personajes[personajeSeleccionadoMain] && personajes[personajeSeleccionadoMain].buffs ? personajes[personajeSeleccionadoMain].buffs.map((buff) => (
+          <div key={`${personajeSeleccionadoMain}-${buff.id}`} className="tarjeta-buffs">
+            <div className="checkbox-titulo">
+              <input type="checkbox" className="form-check-input border-dark" checked={listaBuffs.includes(buff.id)} name={buff.id} onChange={handleBuffs}/>
+              <h5>{buff.nombre}</h5>
+            </div>
+            <p>{buff.desc}</p>
+            {buff.stacks && <input type="number" min={stacks[0]} max={stacks[1]} className="form-control"></input>}
+            {buff.stacks && <p>Min: {stacks[0]} - Max: {stacks[1]}</p>}
           </div>
-          <p>{buff.desc}</p>
-          {buff.stacks && <input type="number" className="form-control"></input>}
-        </div>
-      )) : ""}
+        )) : ""}
+      </div>
     </div>
   )
 }

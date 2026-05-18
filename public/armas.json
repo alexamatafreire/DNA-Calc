@@ -1,0 +1,17 @@
+{
+    "Eternal Farewell" : {
+        "tipo" : "Greatsword",
+        "buffs" : [
+            {
+                "id" : "Eternal Farewell_0",
+                "nombre" : "Morale",
+                "stacks" : false,
+                "desc" : "Morale (+15%, +18%, +21%, +24%, +27%, +30%).",
+                "target" : "self",
+                "effects" : {
+                    
+                }
+            }
+        ]
+    }
+}

@@ -146,3 +146,10 @@ body {
 .tarjeta-buffs p, .tarjeta-buffs h5 {
   margin-bottom: 0;
 }
+
+.lista-buffs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
