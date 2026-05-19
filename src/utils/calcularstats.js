@@ -16,13 +16,15 @@ export function calcularStats(wedgesList, personajes) {
 function calcularStatsWedges(wedgesList) {
     const wedgesMain = useWedgeStore((state) => (state.mainCharWedges));
     let stats = {};
-    Object.values(wedgesMain).forEach(wedge => {
-        if (wedge != undefined) {
-            Object.keys(wedgesList[wedge]["buffs"]).forEach(key => {
-                (stats[key] ??= []).push(wedgesList[wedge]["buffs"][key]);
-            });
-        }
-    });
+    if (Object.keys(wedgesList).length > 0) {
+        Object.values(wedgesMain).forEach(wedge => {
+            if (wedge != "") {
+                Object.keys(wedgesList[wedge]["buffs"]).forEach(key => {
+                    (stats[key] ??= []).push(wedgesList[wedge]["buffs"][key]);
+                });
+            }
+        });
+    }
     return stats;
 }
 

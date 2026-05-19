@@ -22,6 +22,7 @@ const DamageTable = ({wedgesList, personajes}) => {
         "Skill Intensity": mejoras["Skill Intensity"],
         "Morale": mejoras["Morale"],
         "Skill Range": mejoras["Skill Range"],
+        "Skill Efficiency": 1+mejoras["Skill Efficiency"],
         "Current HP": 1
     }
     const niveles = {"e" : nivelEMain, "q" : nivelQMain, "pasiva" : nivelPasivaMain};
@@ -40,15 +41,15 @@ const DamageTable = ({wedgesList, personajes}) => {
                 <tbody>
                     <tr>
                         <td>ATK</td>
-                        <td>{Math.round(statsPersonaje["ATK"]*100)/100}</td>
+                        <td>{!isNaN(statsPersonaje["ATK"]) && Math.round(statsPersonaje["ATK"]*100)/100}</td>
                     </tr>
                     <tr>
                         <td>HP</td>
-                        <td>{Math.round(statsPersonaje["HP"])}</td>
+                        <td>{!isNaN(statsPersonaje["HP"]) && Math.round(statsPersonaje["HP"]??0)}</td>
                     </tr>
                     <tr>
                         <td>Sanity</td>
-                        <td>{Math.round(statsPersonaje["Sanity"])}</td>
+                        <td>{!isNaN(statsPersonaje["Sanity"]) && Math.round(statsPersonaje["Sanity"]??0)}</td>
                     </tr>
                     <tr>
                         <td>Skill Intensity</td>
@@ -135,6 +136,8 @@ function numeroTipo(num, tipo) {
             return `${Math.round(num)}m`;
         case "s": //segundos
             return `${num}s`;
+        case "r": //redondear
+            return `${Math.round(num)}`;
         default:
             return num;
     }

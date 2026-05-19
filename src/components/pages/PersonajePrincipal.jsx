@@ -59,7 +59,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       </div>
       <br />
       <h4>Wedges</h4>
-      <DemonWedges wedgesList={wedgesList} slots={slots} setSlots={setSlots} ></DemonWedges>
+      <DemonWedges wedgesList={wedgesList} slots={slots} setSlots={setSlots} tipo={personajes[personajeSeleccionadoMain]?.tipo??"any"} ></DemonWedges>
       <br />
       <h4>Buffs</h4>
       <div className='lista-buffs'>

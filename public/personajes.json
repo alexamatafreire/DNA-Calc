@@ -1,6 +1,6 @@
 {
     "Fushu": {
-        "tipo": "hidro",
+        "tipo": "hydro",
         "ATK": 23,
         "HP": 105,
         "Shield": 105,
@@ -83,7 +83,7 @@
                         "lineas" : [
                         {
                             "nombre" : "Sanity Cost",
-                            "patron" : "%n1",
+                            "patron" : "%r1",
                             "valor" : [12],
                             "daño" : false,
                             "escala" : [["Skill Efficiency", -1]]
@@ -167,7 +167,7 @@
                         "lineas" : [
                         {
                             "nombre" : "Sanity Cost",
-                            "patron" : "%n1",
+                            "patron" : "%r1",
                             "valor" : [120],
                             "daño" : false,
                             "escala" : [["Skill Efficiency", -1]]

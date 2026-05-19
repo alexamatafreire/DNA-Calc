@@ -4,7 +4,7 @@ import { DragDropProvider } from '@dnd-kit/react';
 import HuecoWedge from './HuecoWedge';
 import './DemonWedges.css';
 
-const DemonWedges = ({wedgesList, slots, setSlots}) => {
+const DemonWedges = ({wedgesList, slots, setSlots, tipo}) => {
     const sortedWedges = Object.fromEntries(Object.entries(wedgesList).sort((a,b) => b[1]["tier"] - a[1]["tier"]));
 
     return (
@@ -19,7 +19,7 @@ const DemonWedges = ({wedgesList, slots, setSlots}) => {
                         }
                     } else {
                         if (event.operation.source.id.startsWith("equipado")) {
-                            setSlots(event.operation.source.id.slice(-1), undefined);
+                            setSlots(event.operation.source.id.slice(-1), "");
                         }
                     }
                 }}
@@ -34,7 +34,7 @@ const DemonWedges = ({wedgesList, slots, setSlots}) => {
                 </div>
                 <div className="wedges">
                     {sortedWedges && Object.entries(sortedWedges).map(([id, wedge]) => (
-                        <DemonWedge id={id} key={id} wedge={id} nombre={wedge.nombre} imagen={wedge.imagen} tier={`tier${wedge.tier}`}/>
+                        (wedge.tipo.toLowerCase() == tipo.toLowerCase() || wedge.tipo.toLowerCase() == "any") && <DemonWedge id={id} key={id} wedge={id} nombre={wedge.nombre} imagen={wedge.imagen} tier={`tier${wedge.tier}`}/>
                     ))}
                 </div>
             </DragDropProvider>

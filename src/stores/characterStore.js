@@ -22,7 +22,7 @@ export const useCharacterStore = create()(
             setTeammate2: (char) => set({teammate2: char})
         }),
         {
-            name: 'char-select-storage'
+            name: 'dnacalc-char-select-storage'
         }
     )
 )

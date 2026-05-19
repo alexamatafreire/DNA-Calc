@@ -39,6 +39,7 @@ body {
 .barra-navegacion {
   max-width: 100vw !important;
   box-shadow: 0 0 10px rgb(190, 190, 190);
+  z-index: 1000;
 }
 
 .nav-item {
