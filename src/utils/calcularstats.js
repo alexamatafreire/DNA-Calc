@@ -1,12 +1,17 @@
 import { useCharacterStore } from "../stores/characterStore";
 import { useWedgeStore } from "../stores/wedgesStore";
+import { useWeaponStore } from '../stores/weaponStore';
 
-export function calcularStats(wedgesList, personajes) {
+export function calcularStats(wedgesList, personajes, armas) {
     let statsTotal = {};
     const statsWedges = calcularStatsWedges(wedgesList);
     juntarArrays(statsTotal, statsWedges);
     const statsBuffs = calcularStatsBuffs(personajes);
     juntarArrays(statsTotal, statsBuffs);
+    const statsBuffsMelee = calcularStatsBuffsMelee(armas);
+    juntarArrays(statsTotal, statsBuffsMelee);
+    const statsBuffsRanged = calcularStatsBuffsRanged(armas);
+    juntarArrays(statsTotal, statsBuffsRanged);
     Object.keys(statsTotal).forEach(key => {
         statsTotal[key] = sumarArray(statsTotal[key]);
     });
@@ -36,6 +41,34 @@ function calcularStatsBuffs(personajes) {
         const index = parseInt(buffID.split("_")[1]);
         Object.keys(personajes[personaje]["buffs"][index]["effects"]).forEach(key => {
             (stats[key] ??= []).push(personajes[personaje]["buffs"][index]["effects"][key]);
+        });
+    });}
+    return stats;
+}
+
+function calcularStatsBuffsMelee(armas) {
+    const listaBuffs = useWeaponStore((state) => (state.meleeBuffs));
+    const smelt = useWeaponStore((state) => state.meleeSmelt);
+    let stats = {};
+    if (armas["Eternal Farewell"] != undefined) {listaBuffs.forEach(buffID => {
+        const arma = buffID.split("_")[0];
+        const index = parseInt(buffID.split("_")[1]);
+        Object.keys(armas[arma]["buffs"][index]["effects"]).forEach(key => {
+            (stats[key] ??= []).push(armas[arma]["buffs"][index]["effects"][key]*(1+(smelt/5)));
+        });
+    });}
+    return stats;
+}
+
+function calcularStatsBuffsRanged(armas) {
+    const listaBuffs = useWeaponStore((state) => (state.rangedBuffs));
+    const smelt = useWeaponStore((state) => state.rangedSmelt);
+    let stats = {};
+    if (armas["Eternal Farewell"] != undefined) {listaBuffs.forEach(buffID => {
+        const arma = buffID.split("_")[0];
+        const index = parseInt(buffID.split("_")[1]);
+        Object.keys(armas[arma]["buffs"][index]["effects"]).forEach(key => {
+            (stats[key] ??= []).push(armas[arma]["buffs"][index]["effects"][key]*(1+(smelt/5)));
         });
     });}
     return stats;

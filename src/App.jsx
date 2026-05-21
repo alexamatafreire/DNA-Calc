@@ -24,6 +24,19 @@ function App() {
     }
     fetchData();
   }, []);
+  const [armas, setArmas] = useState({});
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("/armas.json");
+        const data = await response.json();
+        setArmas(data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchData();
+  }, []);
   const [wedgesList, setWedgesList] = useState({});
   useEffect(() => {
   async function fetchData() {
@@ -71,12 +84,12 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<PersonajePrincipal wedgesList={wedgesList} personajes={personajes} />} />
-        <Route path='/melee' element={<ArmaMelee/>} />
-        <Route path='/ranged' element={<ArmaDistancia/>} />
+        <Route path='/melee' element={<ArmaMelee armas={armas} />} />
+        <Route path='/ranged' element={<ArmaDistancia armas={armas} />} />
         <Route path='/team' element={<Equipo/>} />
       </Routes>
       <div className="derecha">
-        <DamageTable wedgesList={wedgesList} personajes={personajes} ></DamageTable>
+        <DamageTable wedgesList={wedgesList} personajes={personajes} armas={armas} ></DamageTable>
       </div>
     </BrowserRouter>
   )

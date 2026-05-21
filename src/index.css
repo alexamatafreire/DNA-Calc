@@ -154,3 +154,13 @@ body {
   flex-wrap: nowrap;
   gap: 1rem;
 }
+
+.weapon-smelt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weapon-smelt input {
+  width: 3.5rem;
+}

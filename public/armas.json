@@ -1,6 +1,6 @@
 {
     "Eternal Farewell" : {
-        "tipo" : "Greatsword",
+        "tipo" : "melee",
         "buffs" : [
             {
                 "id" : "Eternal Farewell_0",
@@ -9,7 +9,72 @@
                 "desc" : "Morale (+15%, +18%, +21%, +24%, +27%, +30%).",
                 "target" : "self",
                 "effects" : {
-                    
+                    "Morale" : 0.15
+                }
+            },
+            {
+                "id" : "Eternal Farewell_1",
+                "nombre" : "Skill Intensity",
+                "stacks" : [0,3],
+                "desc" : "When an Electro character uses their Ultimate Skill, grants (+25%, 30%, 35%, 40%, 45%, 50%) Skill Intensity for 12s (up to 3 stacks).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.25
+                }
+            }
+        ]
+    },
+    "Wanewraith" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Wanewraith_0",
+                "nombre" : "Skill Intensity",
+                "stacks" : false,
+                "desc" : "Skill Intensity (+24%, 28.8%, 33.6%, 38.4%, 43.2%, 48%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.24
+                }
+            }
+        ]
+    },
+    "Soulrend" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Soulrend_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+36%, 43.2%, 50.4%, 57.6%, 64.8%, 72%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.36
+                }
+            }
+        ]
+    },
+    "Embla Inflorescence" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Embla Inflorescence_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+30%, 36%, 42%, 48%, 54%, 60%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.3
+                }
+            },
+            {
+                "id" : "Embla Inflorescence_1",
+                "nombre" : "Skill Damage",
+                "stacks" : false,
+                "desc" : "When a Lumino character deals Skill Damage, grants (+35%, 42%, 49%, 56%, 63%, 70%) Skill DMG for 6s.",
+                "target" : "self",
+                "effects" : {
+                    "Skill DMG" : 0.35
                 }
             }
         ]
