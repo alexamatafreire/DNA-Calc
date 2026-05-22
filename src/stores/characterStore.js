@@ -10,6 +10,7 @@ export const useCharacterStore = create()(
             mainCharQLVL: 1,
             mainCharPassiveLVL: 1,
             listaBuffs: [],
+            buffStacks: {},
             teammate1: "Su Yi",
             teammate2: "Lisbell",
             setMainChar: (char) => set({mainChar: char}),
@@ -18,6 +19,7 @@ export const useCharacterStore = create()(
             setMainCharQLVL: (num) => set({mainCharQLVL: num}),
             setMainCharPassiveLVL: (num) => set({mainCharPassiveLVL: num}),
             setListaBuffs: (buffs) => set({listaBuffs: buffs}),
+            setBuffStacks: (buff, stacks) => set((state) => ({buffStacks: {...state.buffStacks, [buff]: stacks}})),
             setTeammate1: (char) => set({teammate1: char}),
             setTeammate2: (char) => set({teammate2: char})
         }),

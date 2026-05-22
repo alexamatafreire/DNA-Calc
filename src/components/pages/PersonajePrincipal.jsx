@@ -19,6 +19,8 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
   const setNivelPasivaMain = useCharacterStore((state) => state.setMainCharPassiveLVL);
   const listaBuffs = useCharacterStore((state) => state.listaBuffs);
   const setListaBuffs = useCharacterStore((state) => state.setListaBuffs);
+  const buffStacks = useCharacterStore((state) => state.buffStacks);
+  const setBuffStacks = useCharacterStore((state) => state.setBuffStacks);
 
   const handleBuffs = (e) => {
     setListaBuffs(e.target.checked ? [...listaBuffs, e.target.name] : listaBuffs.filter((buff) => buff !== e.target.name));
@@ -70,8 +72,10 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
               <h5>{buff.nombre}</h5>
             </div>
             <p>{buff.desc}</p>
-            {buff.stacks && <input type="number" min={stacks[0]} max={stacks[1]} className="form-control"></input>}
-            {buff.stacks && <p>Min: {stacks[0]} - Max: {stacks[1]}</p>}
+            <div className='buff-stacks'>
+              {buff.stacks && <input type="number" defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
+              {buff.stacks && <p>Min: {buff.stacks[0]} - Max: {buff.stacks[1]}</p>}
+            </div>
           </div>
         )) : ""}
       </div>

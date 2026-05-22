@@ -148,6 +148,16 @@ body {
   margin-bottom: 0;
 }
 
+.tarjeta-buffs input[type=number] {
+  width: 4.5rem;
+}
+
+.buff-stacks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .lista-buffs {
   display: flex;
   flex-direction: column;

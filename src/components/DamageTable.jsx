@@ -21,9 +21,12 @@ const DamageTable = ({wedgesList, personajes, armas}) => {
         "Sanity" : personaje?.Sanity * (1+(mejoras["Sanity"] ?? 0)),
         "Skill Intensity": mejoras["Skill Intensity"],
         "Skill DMG": mejoras["Skill DMG"],
-        "Morale": mejoras["Morale"],
         "Skill Range": mejoras["Skill Range"],
         "Skill Efficiency": 1+mejoras["Skill Efficiency"],
+        "Skill Duration": mejoras["Skill Duration"],
+        "Morale": mejoras["Morale"],
+        "PEN": mejoras["PEN"],
+        "DMG Boost": mejoras["DMG Boost"],
         "Current HP": 1
     }
     const niveles = {"e" : nivelEMain, "q" : nivelQMain, "pasiva" : nivelPasivaMain};

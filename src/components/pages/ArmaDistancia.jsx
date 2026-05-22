@@ -8,6 +8,8 @@ const ArmaDistancia = ({armas}) => {
   const setArmaSeleccionada = useWeaponStore((state) => state.setRanged);
   const listaBuffs = useWeaponStore((state) => state.rangedBuffs);
   const setListaBuffs = useWeaponStore((state) => state.setRangedBuffs);
+  const buffStacks = useWeaponStore((state) => state.rangedBuffStacks);
+  const setBuffStacks = useWeaponStore((state) => state.setRangedBuffStacks);
   const smelt = useWeaponStore((state) => state.rangedSmelt);
   const setSmelt = useWeaponStore((state) => state.setRangedSmelt);
 
@@ -48,8 +50,10 @@ const ArmaDistancia = ({armas}) => {
               <h5>{buff.nombre}</h5>
             </div>
             <p>{buff.desc}</p>
-            {/* {buff.stacks && <input type="number" min={stacks[0]} max={stacks[1]} className="form-control"></input>} */}
-            {/* {buff.stacks && <p>Min: {stacks[0]} - Max: {stacks[1]}</p>} */}
+            <div className='buff-stacks'>
+              {buff.stacks && <input type="number" defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
+              {buff.stacks && <p>Min: {buff.stacks[0]} - Max: {buff.stacks[1]}</p>}
+            </div>
           </div>
         )) : ""}
       </div>

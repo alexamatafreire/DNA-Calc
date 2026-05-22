@@ -1,70 +1,4 @@
 {
-    "Fushu": {
-        "tipo": "hydro",
-        "ATK": 23,
-        "HP": 105,
-        "Shield": 105,
-        "DEF": 315,
-        "sanidadbase": 150,
-        "habilidades": {
-            "e" : {
-                "nombre" : "Subcelestial Solace",
-                "tipo" : "Summon",
-                "descripcion" : ["Subcelestial Solace", "Summons 1 [Yunchi]. A Maximum of 2 [Yunchi] can exist at the same time.", "Summon: Yunchi", "Inherits 100% of Fushu's stats and deals Hydro Damage to the nearest 5 enemies once every second. [Yunchi] restores HP and Sanity for nearby teammates once every 3s."],
-                "estadisticas" : [
-                    {
-                        "nombre": "misc",
-                        "lineas": [
-                            {
-                                "nombre" : "Sanity Cost",
-                                "patron" : "%n1",
-                                "valor" : [34],
-                                "daño" : false,
-                                "escala" : [["Skill Efficiency", -1]]
-                            },
-                            {
-                                "nombre" : "Summon DMG",
-                                "patron" : "%p1",
-                                "valor" : [[2.26, 6.67]],
-                                "daño" : true,
-                                "calcs" : [{"value": [2.26, 6.67], "scale": ["Skill Intensity", "ATK"]}],
-                                "escala" : [["Skill Intensity", 1]]
-                            },
-                            {
-                                "nombre" : "Summon Effect Radius",
-                                "patron" : "%m1",
-                                "valor" : [10],
-                                "daño" : false,
-                                "escala" : [["Skill Range", 1]]
-                            },
-                            {
-                                "nombre" : "Summon Duration",
-                                "patron" : "%s1",
-                                "valor" : [10],
-                                "daño" : false,
-                                "escala" : [["Skill Duration", 1]]
-                            },
-                            {
-                                "nombre" : "Summon Healing",
-                                "patron" : "%p1 ATK + %n2",
-                                "valor" : [[0.006, 0.015], 5],
-                                "daño" : true,
-                                "calcs" : [{"value": [0.006, 0.015], "scale": ["Skill Intensity", "ATK"]}, {"value": 5, "scale": ["Skill Intensity"]}],
-                                "escala" : [["Skill Intensity", 1]]
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        "buffs": [
-            {
-                "nombre": "[Nine-Needle Therapy] Skill Intensity Increase",
-                "desc": "Increases Skill Intensity by a percentage of Fushu's Skill Intensity",
-                "hasStacks": true
-            }
-        ]
-    },
     "Lady Nifle": {
         "tipo" : "lumino",
         "ATK" : 21,
@@ -288,360 +222,228 @@
             }
         ]
     },
-    "Lisbell": {
+    "Fina": {
         "tipo" : "lumino",
-        "atkbase" : 21,
-        "hpbase" : 105,
-        "escudobase" : 105,
-        "defbase" : 255,
-        "sanidadbase" : 180,
+        "ATK" : 22,
+        "HP" : 105,
+        "Shield" : 105,
+        "DEF" : 315,
+        "Sanity" : 160,
         "habilidades" : {
             "e" : {
-                "nombre" : "Lunar Hunt LISBELL",
+                "nombre" : "On a Warm Afternoon",
                 "tipo" : "DMG",
-                "descripcion" : ["Lunar Hunt", "Creates 1 [Lunar Hunt] and replaces this skill with [Solar Eclipse]. [Lunar Hunt]: Deals Umbro Damage to all enemies within range upon spawn and reduces their Movement Speed.", "Solar Eclipse", "Creates 1 [Solar Eclipse] and replaces this skill with [Lunar Hunt]. [Solar Eclipse]: Deals Lumino Damage to all enemies within range when summoned and reduces their ATK."],
+                "descripcion" : ["On a Warm Afternoon", "Deals Lumino Damage to enemies in front and reduces their Movement Speed. When [Boisterous Tea Party] is active, using this skill relocates the field to user's position, expands its range to match [Boisterous Tea Party], and increases its damage."],
                 "estadisticas" : [
                     {
                         "nombre" : "misc",
                         "lineas" : [
                         {
                             "nombre" : "Sanity Cost",
-                            "patron" : "%n1",
-                            "valor" : [12],
+                            "patron" : "%r1",
+                            "valor" : [15],
                             "daño" : false,
-                            "escala" : ["Skill Efficiency"]
-                        }]
-                    },
-                    {   
-                        "nombre" : "Lunar Hunt", 
-                        "lineas" : [
+                            "escala" : [["Skill Efficiency", -1]]
+                        },
                         {
                             "nombre" : "Damage",
                             "patron" : "%p1",
-                            "valor" : [[11.32, 34]],
-                            "daño" : "ATK",
-                            "escala" : ["Skill Intensity"]
+                            "valor" : [[0.45, 1.26]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.45, 1.26], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
                         },
                         {
                             "nombre" : "Damage Radius",
                             "patron" : "%m1",
-                            "valor" : [10],
+                            "valor" : [6],
                             "daño" : false,
-                            "escala" : ["Skill Range"]
+                            "escala" : [["Skill Range", 1]]
                         },
                         {
-                            "nombre" : "Movement Speed Decrease",
+                            "nombre" : "Damage Dealt in [Boisterous Tea Party]",
                             "patron" : "%p1",
-                            "valor" : [0.3],
-                            "daño" : false,
-                            "escala" : []
+                            "valor" : [[0.59, 1.85]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.59, 1.85], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
                         },
                         {
                             "nombre" : "Movement Speed Decrease Duration",
                             "patron" : "%s1",
-                            "valor" : [3],
+                            "valor" : [12],
                             "daño" : false,
-                            "escala" : []
-                        }]
-                    },
-                    {
-                        "nombre" : "Solar Eclipse", 
-                        "lineas" : [
-                        {
-                            "nombre" : "Damage",
-                            "patron" : "%p1",
-                            "valor" : [[11.32, 34]],
-                            "daño" : "ATK",
-                            "escala" : ["Skill Intensity"]
-                        },
-                        {
-                            "nombre" : "Damage Radius",
-                            "patron" : "%m1",
-                            "valor" : [3],
-                            "daño" : false,
-                            "escala" : ["Skill Range"]
-                        },
-                        {
-                            "nombre" : "ATK Reduced",
-                            "patron" : "%p1",
-                            "valor" : [0.25],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "ATK Decrease Duration",
-                            "patron" : "%s1",
-                            "valor" : [3],
-                            "daño" : false,
-                            "escala" : []
+                            "escala" : [["Skill Duration", 1]]
                         }]
                     }
                 ]
             },
             "q" : {
-                "nombre" : "Misty Sea Requiem",
+                "nombre" : "Let the Tea Party Begin!",
                 "tipo" : "Buff",
-                "descripcion" : ["Misty Sea Requiem","Enters [Funeral Rite] status. Upon entry, if the user's Skill Range exceeds 100%, the excess is converted into Skill Damage at a fixed ratio, and Skill Range is reduced to 100% for the duration.\nWhile under [Funeral Rite], gains Trigger Probability Increase for ranged weapons; [Lunar Hunt] and [Solar Eclipse] cost no sanity; [Lunar Hunt] pulls enemies toward its centre; [Solar Eclipse] deals increased damage. [Funeral Rite] ends after a set duration or after casting a total of 6 [Lunar Hunt] and / or [Solar Eclipse]."],
+                "descripcion" : ["Let the Tea Party Begin!", "Creates a [Boisterous Tea Party] field in front of Fina.[Boisterous Tea Party] continously consumes Sanity and ends when Sanity drops to 0 or when this skill is held.\n\nDuring [Boisterous Tea Party], using the skill again will switch the field effects in order of the [Tea Party Guests] - [Nightingale], [Hound], [Unicorn], and [Butterfly]. Using the skill again outside the range of [Boisterous Tea Party] will relocate it to Fina's current location.", "Boisterous Tea Party", "Generates an elemental field that corresponds to the element type of the [Tea Party Guests], with [Nightingale] for Hydro, [Hound] for Pyro, [Unicorn] for Electro, [Butterfly] for Anemo.\n\nWhen the field appears or its element shifts, Fina and allies gain bonus elemental damage matching the field type. While [Boisterous Tea Party] is active, the field deals elemental damage to enemies within range every 2 seconds."],
                 "estadisticas" : [
                     {
                         "nombre" : "misc", 
                         "lineas" : [
                         {
                             "nombre" : "Sanity Cost",
-                            "patron" : "%n1",
-                            "valor" : [120],
+                            "patron" : "%r1",
+                            "valor" : [10],
                             "daño" : false,
-                            "escala" : ["Skill Efficiency"]
+                            "escala" : [["Skill Efficiency", -1]]
                         },
                         {
-                            "nombre" : "Trigger Probability Boost",
-                            "patron" : "%p1",
-                            "valor" : [0.6],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "[Funeral Rite] Duration",
-                            "patron" : "%s1",
+                            "nombre" : "Sanity Cost per second",
+                            "patron" : "%r1",
                             "valor" : [12],
                             "daño" : false,
-                            "escala" : ["Skill Duration"]
+                            "escala" : [["Skill Efficiency", -1], ["Skill Duration", -1]]
                         },
                         {
-                            "nombre" : "[Funeral Rite] Skill Range Conversion Percentage",
-                            "patron" : "%p1",
-                            "valor" : [1],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "Enhanced [Solar Eclipse] DMG Radius",
-                            "patron" : "%m1",
-                            "valor" : [6],
-                            "daño" : false,
-                            "escala" : ["Skill Range"]
-                        },
-                        {
-                            "nombre" : "Enhanced [Solar Eclipse] DMG Boost Percentage",
-                            "patron" : "%p1",
-                            "valor" : [[22.64, 68]],
-                            "daño" : "ATK",
-                            "escala" : ["Skill Intensity"]
-                        },
-                        {
-                            "nombre" : "Enhanced [Lunar Hunt] DMG Radius",
+                            "nombre" : "[Boisterous Tea Party] Effect Radius",
                             "patron" : "%m1",
                             "valor" : [10],
                             "daño" : false,
-                            "escala" : ["Skill Range"]
+                            "escala" : [["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "DoT",
+                            "patron" : "%p1",
+                            "valor" : [[3.49, 10.6]],
+                            "daño" : true,
+                            "calcs" : [{"value": [3.49, 10.6], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Additional DMG",
+                            "patron" : "%p1",
+                            "valor" : [[0.051, 0.15]],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Additional DMG Duration",
+                            "patron" : "%s1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : [["Skill Duration", 1]]
                         }]
                     }
                 ]
             },
             "pasiva" : {
-                "nombre" : "Interwoven Cries",
+                "nombre" : "Bad Sorcerers Hate Sunlight!",
                 "tipo" : "Passive",
-                "descripcion" : ["Interwoven Cries", "Based on user's Trigger Probability for ranged weapons, casting [Lunar Hunt] has a chance to also spawn [Solar Eclipse] at the same location, which in turn may spawn another [Lunar Hunt]. [Solar Eclipse] and [Lunar Hunt] summoned this way will not be enhanced by [Misty Sea Requiem]."],
+                "descripcion" : ["Bad Sorcerers Hate Sunlight!", "Grants bonus Lumino Damage that lasts throughout the battle. Each time [On a Warm Afternoon] is used, grants 6 stacks of [Taleweaver Quill]. While [Boisterous Tea Party] is active, generates 1 stack of [Taleweaver Quill] per second, up to 30 stacks.", "Taleweaver Quill", "Deals additional Lumino Damage"],
                 "estadisticas" : [
                     {
                         "nombre" : "misc", 
                         "lineas" : [
                         {
-                            "nombre" : "Effect Trigger Probability",
-                            "patron" : "%p1 Ranged weapon trigger probability",
-                            "valor" : [[0.14, 0.5]],
-                            "daño" : false,
-                            "escala" : ["Ranged Trigger Probability"]
+                            "nombre" : "Additional DMG Throughout the Battle",
+                            "patron" : "%p1",
+                            "valor" : [[0.06, 0.15]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.06, 0.15], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        }]
+                    },
+                    {
+                        "nombre": "Taleweaver Quill",
+                        "lineas": [
+                        {
+                            "nombre" : "Each Stack's Additional DMG",
+                            "patron" : "%p1",
+                            "valor" : [[0.0037, 0.01]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.0037, 0.01], "scale": ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
                         },
                         {
-                            "nombre" : "Effect Trigger Probability Cap",
-                            "patron" : "%p1",
-                            "valor" : [0.5],
+                            "nombre" : "Duration",
+                            "patron" : "%s1",
+                            "valor" : [15],
                             "daño" : false,
-                            "escala" : []
+                            "escala" : [["Skill Duration", 1]]
                         }
                         ]
                     }
                 ]
             }
-        }
-    },
-    "Su Yi": {
-        "tipo" : "lumino",
-        "atkbase" : 21,
-        "hpbase" : 105,
-        "escudobase" : 105,
-        "defbase" : 255,
-        "sanidadbase" : 180,
-        "habilidades" : {
-            "e" : {
-                "nombre" : "Lunar Hunt SU YI",
-                "tipo" : "DMG",
-                "descripcion" : ["Lunar Hunt", "Creates 1 [Lunar Hunt] and replaces this skill with [Solar Eclipse]. [Lunar Hunt]: Deals Umbro Damage to all enemies within range upon spawn and reduces their Movement Speed.", "Solar Eclipse", "Creates 1 [Solar Eclipse] and replaces this skill with [Lunar Hunt]. [Solar Eclipse]: Deals Lumino Damage to all enemies within range when summoned and reduces their ATK."],
-                "estadisticas" : [
-                    {
-                        "nombre" : "misc",
-                        "lineas" : [
-                        {
-                            "nombre" : "Sanity Cost",
-                            "patron" : "%n1",
-                            "valor" : [12],
-                            "daño" : false,
-                            "escala" : ["Skill Efficiency"]
-                        }]
-                    },
-                    {   
-                        "nombre" : "Lunar Hunt", 
-                        "lineas" : [
-                        {
-                            "nombre" : "Damage",
-                            "patron" : "%p1",
-                            "valor" : [[11.32, 34]],
-                            "daño" : "ATK",
-                            "escala" : ["Skill Intensity"]
-                        },
-                        {
-                            "nombre" : "Damage Radius",
-                            "patron" : "%m1",
-                            "valor" : [10],
-                            "daño" : false,
-                            "escala" : ["Skill Range"]
-                        },
-                        {
-                            "nombre" : "Movement Speed Decrease",
-                            "patron" : "%p1",
-                            "valor" : [0.3],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "Movement Speed Decrease Duration",
-                            "patron" : "%s1",
-                            "valor" : [3],
-                            "daño" : false,
-                            "escala" : []
-                        }]
-                    },
-                    {
-                        "nombre" : "Solar Eclipse", 
-                        "lineas" : [
-                        {
-                            "nombre" : "Damage",
-                            "patron" : "%p1",
-                            "valor" : [[11.32, 34]],
-                            "daño" : "ATK",
-                            "escala" : ["Skill Intensity"]
-                        },
-                        {
-                            "nombre" : "Damage Radius",
-                            "patron" : "%m1",
-                            "valor" : [3],
-                            "daño" : false,
-                            "escala" : ["Skill Range"]
-                        },
-                        {
-                            "nombre" : "ATK Reduced",
-                            "patron" : "%p1",
-                            "valor" : [0.25],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "ATK Decrease Duration",
-                            "patron" : "%s1",
-                            "valor" : [3],
-                            "daño" : false,
-                            "escala" : []
-                        }]
-                    }
-                ]
+        },
+        "buffs" : [
+            {
+                "id" : "Fina_0",
+                "nombre" : "Passive: Skill Range 1",
+                "stacks" : false,
+                "desc" : "Skill Range +12%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.12
+                }
             },
-            "q" : {
-                "nombre" : "Misty Sea Requiem",
-                "tipo" : "Buff",
-                "descripcion" : ["Misty Sea Requiem","Enters [Funeral Rite] status. Upon entry, if the user's Skill Range exceeds 100%, the excess is converted into Skill Damage at a fixed ratio, and Skill Range is reduced to 100% for the duration.\nWhile under [Funeral Rite], gains Trigger Probability Increase for ranged weapons; [Lunar Hunt] and [Solar Eclipse] cost no sanity; [Lunar Hunt] pulls enemies toward its centre; [Solar Eclipse] deals increased damage. [Funeral Rite] ends after a set duration or after casting a total of 6 [Lunar Hunt] and / or [Solar Eclipse]."],
-                "estadisticas" : [
-                    {
-                        "nombre" : "misc", 
-                        "lineas" : [
-                        {
-                            "nombre" : "Sanity Cost",
-                            "patron" : "%n1",
-                            "valor" : [120],
-                            "daño" : false,
-                            "escala" : ["Skill Efficiency"]
-                        },
-                        {
-                            "nombre" : "Trigger Probability Boost",
-                            "patron" : "%p1",
-                            "valor" : [0.6],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "[Funeral Rite] Duration",
-                            "patron" : "%s1",
-                            "valor" : [12],
-                            "daño" : false,
-                            "escala" : ["Skill Duration"]
-                        },
-                        {
-                            "nombre" : "[Funeral Rite] Skill Range Conversion Percentage",
-                            "patron" : "%p1",
-                            "valor" : [1],
-                            "daño" : false,
-                            "escala" : []
-                        },
-                        {
-                            "nombre" : "Enhanced [Solar Eclipse] DMG Radius",
-                            "patron" : "%m1",
-                            "valor" : [6],
-                            "daño" : false,
-                            "escala" : ["Skill Range"]
-                        },
-                        {
-                            "nombre" : "Enhanced [Solar Eclipse] DMG Boost Percentage",
-                            "patron" : "%p1",
-                            "valor" : [[22.64, 68]],
-                            "daño" : "ATK",
-                            "escala" : ["Skill Intensity"]
-                        },
-                        {
-                            "nombre" : "Enhanced [Lunar Hunt] DMG Radius",
-                            "patron" : "%m1",
-                            "valor" : [10],
-                            "daño" : false,
-                            "escala" : ["Skill Range"]
-                        }]
-                    }
-                ]
+            {
+                "id" : "Fina_1",
+                "nombre" : "Passive: Skill Range 2",
+                "stacks" : false,
+                "desc" : "Skill Range +18%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.18
+                }
             },
-            "pasiva" : {
-                "nombre" : "Interwoven Cries",
-                "tipo" : "Passive",
-                "descripcion" : ["Interwoven Cries", "Based on user's Trigger Probability for ranged weapons, casting [Lunar Hunt] has a chance to also spawn [Solar Eclipse] at the same location, which in turn may spawn another [Lunar Hunt]. [Solar Eclipse] and [Lunar Hunt] summoned this way will not be enhanced by [Misty Sea Requiem]."],
-                "estadisticas" : [
-                    {
-                        "nombre" : "misc", 
-                        "lineas" : [
-                        {
-                            "nombre" : "Effect Trigger Probability",
-                            "patron" : "%p1 Ranged weapon trigger probability",
-                            "valor" : [[0.14, 0.5]],
-                            "daño" : false,
-                            "escala" : ["Ranged Trigger Probability"]
-                        },
-                        {
-                            "nombre" : "Effect Trigger Probability Cap",
-                            "patron" : "%p1",
-                            "valor" : [0.5],
-                            "daño" : false,
-                            "escala" : []
-                        }
-                        ]
-                    }
-                ]
+            {
+                "id" : "Fina_2",
+                "nombre" : "Passive: Skill Duration 1",
+                "stacks" : false,
+                "desc" : "Skill Duration +6%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.06
+                }
+            },
+            {
+                "id" : "Fina_3",
+                "nombre" : "Passive: Skill Duration 2",
+                "stacks" : false,
+                "desc" : "Skill Duration +9%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.09
+                }
+            },
+            {
+                "id" : "Fina_4",
+                "nombre" : "Passive: To Be Continued",
+                "stacks" : [0,45],
+                "desc" : "Using [On a Warm Afternoon] increases the user's and allies's damage based on the number of [Taleweaver Quil] stacks. (1% per stack)",
+                "target" : "all",
+                "effects" : {
+                    "DMG Boost" : 0.01
+                }
+            },
+            {
+                "id" : "Fina_5",
+                "nombre" : "Intron 1",
+                "stacks" : [0,4],
+                "desc" : "Targets granted the ability to deal additional elemental damage by [Boisterous Tea Party] gain an effect that increases their PEN stats by 6% for each type of additional damage effect they possess.",
+                "target" : "all",
+                "effects" : {
+                    "PEN" : 0.06
+                }
+            },
+            {
+                "id" : "Fina_6",
+                "nombre" : "Intron 4",
+                "stacks" : [0,45],
+                "desc" : "Each stack of [Taleweaver Quill] increases Fina's Skill Damage by 2% and Skill Range by 1%",
+                "target" : "self",
+                "effects" : {
+                    "Skill DMG" : 0.02,
+                    "Skill Range" : 0.01
+                }
             }
-        }
+        ]
     }
 }

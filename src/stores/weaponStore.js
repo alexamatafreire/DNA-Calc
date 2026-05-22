@@ -9,13 +9,17 @@ export const useWeaponStore = create()(
             ranged: "Eternal Farewell",
             rangedSmelt: 0,
             meleeBuffs: [],
+            meleeBuffStacks: {},
             rangedBuffs: [],
+            rangedBuffStacks: {},
             setMelee: (weapon) => set({melee: weapon}),
             setMeleeSmelt: (num) => set({meleeSmelt: num}),
             setRanged: (weapon) => set({ranged: weapon}),
             setRangedSmelt: (num) => set({rangedSmelt: num}),
             setMeleeBuffs: (buffs) => set({meleeBuffs: buffs}),
-            setRangedBuffs: (buffs) => set({rangedBuffs: buffs})
+            setMeleeBuffStacks: (buff, stacks) => set((state) => ({meleeBuffStacks: {...state.meleeBuffStacks, [buff]: stacks}})),
+            setRangedBuffs: (buffs) => set({rangedBuffs: buffs}),
+            setRangedBuffStacks: (buff, stacks) => set((state) => ({rangedBuffStacks: {...state.rangedBuffStacks, [buff]: stacks}})),
         }),
         {
             name: 'dnacalc-weapon-select-storage'

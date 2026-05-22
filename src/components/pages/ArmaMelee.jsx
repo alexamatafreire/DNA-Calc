@@ -8,6 +8,8 @@ const ArmaMelee = ({armas}) => {
   const setArmaSeleccionada = useWeaponStore((state) => state.setMelee);
   const listaBuffs = useWeaponStore((state) => state.meleeBuffs);
   const setListaBuffs = useWeaponStore((state) => state.setMeleeBuffs);
+  const buffStacks = useWeaponStore((state) => state.meleeBuffStacks);
+  const setBuffStacks = useWeaponStore((state) => state.setMeleeBuffStacks);
   const smelt = useWeaponStore((state) => state.meleeSmelt);
   const setSmelt = useWeaponStore((state) => state.setMeleeSmelt);
 
@@ -48,8 +50,10 @@ const ArmaMelee = ({armas}) => {
               <h5>{buff.nombre}</h5>
             </div>
             <p>{buff.desc}</p>
-            {/* {buff.stacks && <input type="number" min={stacks[0]} max={stacks[1]} className="form-control"></input>} */}
-            {/* {buff.stacks && <p>Min: {stacks[0]} - Max: {stacks[1]}</p>} */}
+            <div className='buff-stacks'>
+              {buff.stacks && <input type="number" defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
+              {buff.stacks && <p>Min: {buff.stacks[0]} - Max: {buff.stacks[1]}</p>}
+            </div>
           </div>
         )) : ""}
       </div>
