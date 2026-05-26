@@ -21,22 +21,44 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
   const setListaBuffs = useCharacterStore((state) => state.setListaBuffs);
   const buffStacks = useCharacterStore((state) => state.buffStacks);
   const setBuffStacks = useCharacterStore((state) => state.setBuffStacks);
+  const [favoritos, setFavoritos] = useState([]);
 
   const handleBuffs = (e) => {
     setListaBuffs(e.target.checked ? [...listaBuffs, e.target.name] : listaBuffs.filter((buff) => buff !== e.target.name));
   }
+
+  const handleFavoritos = (e) => {
+    setFavoritos(e.target.checked ? [...favoritos, personajeSeleccionadoMain] : favoritos.filter((personaje) => personaje !== personajeSeleccionadoMain));
+  }
   
   return (
     <div className='izquierda'>
+      <style>
+        {`.level-slider::-webkit-slider-thumb {
+          border: 3px solid ${personajes[personajeSeleccionadoMain]?.color};
+          box-shadow: -1000px 0 0 995px ${personajes[personajeSeleccionadoMain]?.color};
+        }
+        .imagen-personaje {
+          border: 2px solid ${personajes[personajeSeleccionadoMain]?.color};
+        }`}
+      </style>
       <h4>Character</h4>
       <div className="character-wrapper">
-        <img src={`/fotos_personajes/completas/${personajeSeleccionadoMain}.png`} className='rounded-circle border border-2 border-dark' width={100} height={100} alt="" />
+        <img src={`/fotos_personajes/${personajeSeleccionadoMain}.png`} className='rounded-circle imagen-personaje' width={100} height={100} alt="" />
         <div className="character-selector-level">
           <select className="form-select border-2" name="personajeSelec" value={personajeSeleccionadoMain} onChange={e => setPersonajeSeleccionadoMain(e.target.value)}>
-            {Object.entries(personajes).sort().map(([nombre]) => (
-              <option value={nombre} key={nombre}>{nombre}</option>
-            ))}
+            <optgroup label='Favorites'>
+              {favoritos.sort().map((nombre) => (
+                <option value={nombre} key={"favs_"+nombre}>{nombre}</option>
+              ))}
+            </optgroup>
+            <optgroup label='Non-favorites'>
+              {Object.keys(personajes).filter((personaje) => !favoritos.includes(personaje)).sort().map((nombre) => (
+                <option value={nombre} key={nombre}>{nombre}</option>
+              ))}
+            </optgroup>
           </select>
+          <input type='checkbox' className='favorite-star' checked={favoritos.includes(personajeSeleccionadoMain)} onChange={handleFavoritos}></input>
           <div className="">
             <div className="titulo-slider">Level</div>
             <div className="slider-wrapper">
@@ -65,7 +87,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       <br />
       <h4>Buffs</h4>
       <div className='lista-buffs'>
-        {personajes[personajeSeleccionadoMain] && personajes[personajeSeleccionadoMain].buffs ? personajes[personajeSeleccionadoMain].buffs.map((buff) => (
+        {personajes[personajeSeleccionadoMain] && personajes[personajeSeleccionadoMain].buffs ? personajes[personajeSeleccionadoMain].buffs.filter((buff) => buff.target != "allies").map((buff) => (
           <div key={`${personajeSeleccionadoMain}-${buff.id}`} className="tarjeta-buffs">
             <div className="checkbox-titulo">
               <input type="checkbox" className="form-check-input border-dark" checked={listaBuffs.includes(buff.id)} name={buff.id} onChange={handleBuffs}/>
@@ -73,7 +95,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
             </div>
             <p>{buff.desc}</p>
             <div className='buff-stacks'>
-              {buff.stacks && <input type="number" defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
+              {buff.stacks && <input type="number" defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {if (e.target.value > buff.stacks[1]) {e.target.value = buff.stacks[1]} setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
               {buff.stacks && <p>Min: {buff.stacks[0]} - Max: {buff.stacks[1]}</p>}
             </div>
           </div>

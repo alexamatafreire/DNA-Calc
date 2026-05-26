@@ -86,7 +86,7 @@ function App() {
         <Route path='/' element={<PersonajePrincipal wedgesList={wedgesList} personajes={personajes} />} />
         <Route path='/melee' element={<ArmaMelee armas={armas} />} />
         <Route path='/ranged' element={<ArmaDistancia armas={armas} />} />
-        <Route path='/team' element={<Equipo/>} />
+        <Route path='/team' element={<Equipo personajes={personajes} />} />
       </Routes>
       <div className="derecha">
         <DamageTable wedgesList={wedgesList} personajes={personajes} armas={armas} ></DamageTable>

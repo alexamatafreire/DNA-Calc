@@ -174,3 +174,8 @@ body {
 .weapon-smelt input {
   width: 3.5rem;
 }
+
+.teammates-wrapper {
+  display: flex;
+  justify-content: space-around;
+}

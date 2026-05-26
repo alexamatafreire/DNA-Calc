@@ -1,6 +1,7 @@
 {
     "Lady Nifle": {
         "tipo" : "lumino",
+        "color" : "#29786b",
         "ATK" : 21,
         "HP" : 105,
         "Shield" : 105,
@@ -224,6 +225,7 @@
     },
     "Fina": {
         "tipo" : "lumino",
+        "color" : "#1b7196",
         "ATK" : 22,
         "HP" : 105,
         "Shield" : 105,
@@ -442,6 +444,200 @@
                 "effects" : {
                     "Skill DMG" : 0.02,
                     "Skill Range" : 0.01
+                }
+            }
+        ]
+    },
+    "Fushu": {
+        "tipo" : "Hydro",
+        "color" : "#1f578c",
+        "ATK" : 23,
+        "HP" : 105,
+        "Shield" : 105,
+        "DEF" : 315,
+        "Sanity" : 150,
+        "habilidades" : {
+            "e" : {
+                "nombre" : "On a Warm Afternoon",
+                "tipo" : "DMG",
+                "descripcion" : ["On a Warm Afternoon", "Deals Lumino Damage to enemies in front and reduces their Movement Speed. When [Boisterous Tea Party] is active, using this skill relocates the field to user's position, expands its range to match [Boisterous Tea Party], and increases its damage."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc",
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%r1",
+                            "valor" : [15],
+                            "daño" : false,
+                            "escala" : [["Skill Efficiency", -1]]
+                        },
+                        {
+                            "nombre" : "Damage",
+                            "patron" : "%p1",
+                            "valor" : [[0.45, 1.26]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.45, 1.26], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Damage Radius",
+                            "patron" : "%m1",
+                            "valor" : [6],
+                            "daño" : false,
+                            "escala" : [["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "Damage Dealt in [Boisterous Tea Party]",
+                            "patron" : "%p1",
+                            "valor" : [[0.59, 1.85]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.59, 1.85], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Movement Speed Decrease Duration",
+                            "patron" : "%s1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : [["Skill Duration", 1]]
+                        }]
+                    }
+                ]
+            },
+            "q" : {
+                "nombre" : "Let the Tea Party Begin!",
+                "tipo" : "Buff",
+                "descripcion" : ["Let the Tea Party Begin!", "Creates a [Boisterous Tea Party] field in front of Fina.[Boisterous Tea Party] continously consumes Sanity and ends when Sanity drops to 0 or when this skill is held.\n\nDuring [Boisterous Tea Party], using the skill again will switch the field effects in order of the [Tea Party Guests] - [Nightingale], [Hound], [Unicorn], and [Butterfly]. Using the skill again outside the range of [Boisterous Tea Party] will relocate it to Fina's current location.", "Boisterous Tea Party", "Generates an elemental field that corresponds to the element type of the [Tea Party Guests], with [Nightingale] for Hydro, [Hound] for Pyro, [Unicorn] for Electro, [Butterfly] for Anemo.\n\nWhen the field appears or its element shifts, Fina and allies gain bonus elemental damage matching the field type. While [Boisterous Tea Party] is active, the field deals elemental damage to enemies within range every 2 seconds."],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Sanity Cost",
+                            "patron" : "%r1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : [["Skill Efficiency", -1]]
+                        },
+                        {
+                            "nombre" : "Sanity Cost per second",
+                            "patron" : "%r1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : [["Skill Efficiency", -1], ["Skill Duration", -1]]
+                        },
+                        {
+                            "nombre" : "[Boisterous Tea Party] Effect Radius",
+                            "patron" : "%m1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : [["Skill Range", 1]]
+                        },
+                        {
+                            "nombre" : "DoT",
+                            "patron" : "%p1",
+                            "valor" : [[3.49, 10.6]],
+                            "daño" : true,
+                            "calcs" : [{"value": [3.49, 10.6], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Additional DMG",
+                            "patron" : "%p1",
+                            "valor" : [[0.051, 0.15]],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Additional DMG Duration",
+                            "patron" : "%s1",
+                            "valor" : [12],
+                            "daño" : false,
+                            "escala" : [["Skill Duration", 1]]
+                        }]
+                    }
+                ]
+            },
+            "pasiva" : {
+                "nombre" : "Bad Sorcerers Hate Sunlight!",
+                "tipo" : "Passive",
+                "descripcion" : ["Bad Sorcerers Hate Sunlight!", "Grants bonus Lumino Damage that lasts throughout the battle. Each time [On a Warm Afternoon] is used, grants 6 stacks of [Taleweaver Quill]. While [Boisterous Tea Party] is active, generates 1 stack of [Taleweaver Quill] per second, up to 30 stacks.", "Taleweaver Quill", "Deals additional Lumino Damage"],
+                "estadisticas" : [
+                    {
+                        "nombre" : "misc", 
+                        "lineas" : [
+                        {
+                            "nombre" : "Additional DMG Throughout the Battle",
+                            "patron" : "%p1",
+                            "valor" : [[0.06, 0.15]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.06, 0.15], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        }]
+                    },
+                    {
+                        "nombre": "Taleweaver Quill",
+                        "lineas": [
+                        {
+                            "nombre" : "Each Stack's Additional DMG",
+                            "patron" : "%p1",
+                            "valor" : [[0.0037, 0.01]],
+                            "daño" : true,
+                            "calcs" : [{"value": [0.0037, 0.01], "scale": ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", 1]]
+                        },
+                        {
+                            "nombre" : "Duration",
+                            "patron" : "%s1",
+                            "valor" : [15],
+                            "daño" : false,
+                            "escala" : [["Skill Duration", 1]]
+                        }
+                        ]
+                    }
+                ]
+            }
+        },
+        "buffs" : [
+            {
+                "id" : "Fushu_0",
+                "nombre" : "Passive: Skill Duration 1",
+                "stacks" : false,
+                "desc" : "Skill Duration +6%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.06
+                }
+            },
+            {
+                "id" : "Fushu_1",
+                "nombre" : "Passive: Skill Duration 2",
+                "stacks" : false,
+                "desc" : "Skill Duration +9%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.09
+                }
+            },
+            {
+                "id" : "Fushu_2",
+                "nombre" : "Passive: Skill Intensity 1",
+                "stacks" : false,
+                "desc" : "Skill Intensity +8%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.08
+                }
+            },
+            {
+                "id" : "Fushu_3",
+                "nombre" : "Passive: Skill Intensity 2",
+                "stacks" : false,
+                "desc" : "Skill Intensity +12%",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.12
                 }
             }
         ]

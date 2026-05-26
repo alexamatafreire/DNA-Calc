@@ -22,7 +22,7 @@ const DamageTable = ({wedgesList, personajes, armas}) => {
         "Skill Intensity": mejoras["Skill Intensity"],
         "Skill DMG": mejoras["Skill DMG"],
         "Skill Range": mejoras["Skill Range"],
-        "Skill Efficiency": 1+mejoras["Skill Efficiency"],
+        "Skill Efficiency": mejoras["Skill Efficiency"],
         "Skill Duration": mejoras["Skill Duration"],
         "Morale": mejoras["Morale"],
         "PEN": mejoras["PEN"],
@@ -139,7 +139,7 @@ function numeroTipo(num, tipo) {
         case "m": //metros
             return `${Math.round(num)}m`;
         case "s": //segundos
-            return `${num}s`;
+            return `${Math.round(num*100)/100}s`;
         case "r": //redondear
             return `${Math.round(num)}`;
         default:

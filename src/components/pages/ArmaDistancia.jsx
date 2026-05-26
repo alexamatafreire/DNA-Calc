@@ -35,7 +35,7 @@ const ArmaDistancia = ({armas}) => {
             ))}
           </select>
           <div className='weapon-smelt'>
-            Smelt: <input type="number" className='form-control' min={0} max={5} value={smelt} onChange={e => setSmelt(e.target.value)}/>
+            Smelt: <input type="number" className='form-control' min={0} max={5} value={smelt} onChange={e => {if (e.target.value > 5) {e.target.value = 5} if (e.target.value < 0) {e.target.value = 0} setSmelt(e.target.value)}}/>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ const ArmaDistancia = ({armas}) => {
             </div>
             <p>{buff.desc}</p>
             <div className='buff-stacks'>
-              {buff.stacks && <input type="number" defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
+              {buff.stacks && <input type="number" onKeyDown={(event) => {event.preventDefault();}} defaultValue={buffStacks[buff.id]??buff.stacks[0]} min={buff.stacks[0]} max={buff.stacks[1]} onChange={(e) => {if (e.target.value > buff.stacks[1]) {e.target.value = buff.stacks[1]} setBuffStacks(buff.id, parseInt(e.target.value))}} className="form-control"></input>}
               {buff.stacks && <p>Min: {buff.stacks[0]} - Max: {buff.stacks[1]}</p>}
             </div>
           </div>

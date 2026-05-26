@@ -41,7 +41,7 @@ function calcularStatsBuffs(personajes) {
         const personaje = buffID.split("_")[0];
         const index = parseInt(buffID.split("_")[1]);
         Object.keys(personajes[personaje]["buffs"][index]["effects"]).forEach(key => {
-            (stats[key] ??= []).push(personajes[personaje]["buffs"][index]["effects"][key]*(stacksBuffs[buffID]??1));
+            (stats[key] ??= []).push(personajes[personaje]["buffs"][index]["effects"][key]*(stacksBuffs[buffID] && !isNaN(stacksBuffs[buffID]) ? stacksBuffs[buffID] : 1));
         });
     });}
     return stats;
@@ -56,7 +56,7 @@ function calcularStatsBuffsMelee(armas) {
         const arma = buffID.split("_")[0];
         const index = parseInt(buffID.split("_")[1]);
         Object.keys(armas[arma]["buffs"][index]["effects"]).forEach(key => {
-            (stats[key] ??= []).push(armas[arma]["buffs"][index]["effects"][key]*(1+(smelt/5))*(stacksBuffs[buffID]??1));
+            (stats[key] ??= []).push(armas[arma]["buffs"][index]["effects"][key]*(1+(smelt/5))*(stacksBuffs[buffID] && !isNaN(stacksBuffs[buffID]) ? stacksBuffs[buffID] : 1));
         });
     });}
     return stats;
@@ -71,7 +71,7 @@ function calcularStatsBuffsRanged(armas) {
         const arma = buffID.split("_")[0];
         const index = parseInt(buffID.split("_")[1]);
         Object.keys(armas[arma]["buffs"][index]["effects"]).forEach(key => {
-            (stats[key] ??= []).push(armas[arma]["buffs"][index]["effects"][key]*(1+(smelt/5))*(stacksBuffs[buffID]??1));
+            (stats[key] ??= []).push(armas[arma]["buffs"][index]["effects"][key]*(1+(smelt/5))*(stacksBuffs[buffID] && !isNaN(stacksBuffs[buffID]) ? stacksBuffs[buffID] : 1));
         });
     });}
     return stats;
