@@ -28,7 +28,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
   }
 
   const handleFavoritos = (e) => {
-    setFavoritos(e.target.checked ? [...favoritos, personajeSeleccionadoMain] : favoritos.filter((personaje) => personaje !== personajeSeleccionadoMain));
+    setFavoritos(!favoritos.includes(personajeSeleccionadoMain) ? [...favoritos, personajeSeleccionadoMain] : favoritos.filter((personaje) => personaje !== personajeSeleccionadoMain));
   }
   
   return (
@@ -46,21 +46,23 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
       <div className="character-wrapper">
         <img src={`/fotos_personajes/${personajeSeleccionadoMain}.png`} className='rounded-circle imagen-personaje' width={100} height={100} alt="" />
         <div className="character-selector-level">
-          <select className="form-select border-2" name="personajeSelec" value={personajeSeleccionadoMain} onChange={e => setPersonajeSeleccionadoMain(e.target.value)}>
-            <optgroup label='Favorites'>
-              {favoritos.sort().map((nombre) => (
-                <option value={nombre} key={"favs_"+nombre}>{nombre}</option>
-              ))}
-            </optgroup>
-            <optgroup label='Non-favorites'>
-              {Object.keys(personajes).filter((personaje) => !favoritos.includes(personaje)).sort().map((nombre) => (
-                <option value={nombre} key={nombre}>{nombre}</option>
-              ))}
-            </optgroup>
-          </select>
-          <input type='checkbox' className='favorite-star' checked={favoritos.includes(personajeSeleccionadoMain)} onChange={handleFavoritos}></input>
+          <div className='character-selector-fav'>
+            <select className="form-select border-2" name="personajeSelec" value={personajeSeleccionadoMain} onChange={e => setPersonajeSeleccionadoMain(e.target.value)}>
+              <optgroup label='Favorites'>
+                {favoritos.sort().map((nombre) => (
+                  <option value={nombre} key={"favs_"+nombre}>{nombre}</option>
+                ))}
+              </optgroup>
+              <optgroup label='Non-favorites'>
+                {Object.keys(personajes).filter((personaje) => !favoritos.includes(personaje)).sort().map((nombre) => (
+                  <option value={nombre} key={nombre}>{nombre}</option>
+                ))}
+              </optgroup>
+            </select>
+            <i className={`estrella-fav bi ${favoritos.includes(personajeSeleccionadoMain) ? "bi-star-fill" : "bi-star"}`} onClick={handleFavoritos}></i>
+          </div>
           <div className="">
-            <div className="titulo-slider">Level</div>
+            <div className="titulo-slider justificar-izquierda">Level</div>
             <div className="slider-wrapper">
               <input type="range" className='level-slider' name="nivelPersonaje" min={1} max={80} defaultValue={nivelMain} onChange={e => setNivelMain(e.target.value)}/>
               <div className='numero-slider'>{nivelMain}</div>

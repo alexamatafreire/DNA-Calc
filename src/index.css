@@ -102,6 +102,12 @@ body {
 .titulo-slider {
   font-weight: 500;
   font-size: 17px;
+  display: flex;
+  justify-content: center;
+}
+
+.justificar-izquierda {
+  justify-content: left;
 }
 
 .skills-wrapper {
@@ -109,6 +115,9 @@ body {
   grid-template-columns: max-content 1fr 20px;
   align-items: center;
   column-gap: 1rem;
+  box-shadow: 0 0 10px rgb(175, 175, 175);
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .character-wrapper {
@@ -178,4 +187,16 @@ body {
 .teammates-wrapper {
   display: flex;
   justify-content: space-around;
+}
+
+.estrella-fav {
+  color: rgb(240, 185, 33);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.character-selector-fav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
