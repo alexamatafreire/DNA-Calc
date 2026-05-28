@@ -22,7 +22,8 @@ export const useWeaponStore = create()(
             setRangedBuffStacks: (buff, stacks) => set((state) => ({rangedBuffStacks: {...state.rangedBuffStacks, [buff]: stacks}})),
         }),
         {
-            name: 'dnacalc-weapon-select-storage'
+            name: 'dnacalc-weapon-select-storage',
+            storage: createJSONStorage(() => sessionStorage)
         }
     )
 )

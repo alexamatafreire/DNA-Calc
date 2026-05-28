@@ -8,7 +8,10 @@ import ArmaMelee from './components/pages/ArmaMelee';
 import ArmaDistancia from './components/pages/ArmaDistancia';
 import Equipo from './components/pages/Equipo'
 import { useWedgeStore } from './stores/wedgesStore';
+import { useUserStore } from './stores/userStore';
 import { calcularStats } from './utils/calcularstats';
+import axios from 'axios';
+import LoginWindow from './components/LoginWindow';
 
 function App() {
   const [personajes, setPersonajes] = useState({});
@@ -54,11 +57,10 @@ function App() {
     color: isActive ? "#FFF" : "#000",
     backgroundColor : isActive ? "#222" : "transparent"
   });
-
-  const [mejoras, setMejoras] = useState({
-    "ATK": [],
-    "HP": []
-  });
+  const [loginVisible, setLoginVisible] = useState(false);
+  const username = useUserStore((state) => state.username);
+  const setUsername = useUserStore((state) => state.setUsername);
+  setUsername(tempUser);
 
   return (
     <BrowserRouter>
@@ -80,6 +82,8 @@ function App() {
               </li>
             </ul>
           </nav>
+          {username == "none" && <i className="bi bi-person-circle"  onClick={() => {setLoginVisible(true)}}></i>}
+          {username != "none" && <p>Welcome, {username}!</p>}
         </div>
       </div>
       <Routes>
@@ -91,8 +95,25 @@ function App() {
       <div className="derecha">
         <DamageTable wedgesList={wedgesList} personajes={personajes} armas={armas} ></DamageTable>
       </div>
+      {loginVisible && <LoginWindow setLoginVisible={setLoginVisible}></LoginWindow>}
     </BrowserRouter>
   )
 }
+
+const getUserAuth = async () => {
+  try {
+    const res = await axios.get(
+      "http://localhost:3001/getuser",
+      {
+        withCredentials: true
+      }
+    );
+    return(res.data.username);
+  } catch (e) {
+    return(e.response.data.username);
+  }
+}
+let tempUser = "none";
+tempUser = await getUserAuth();
 
 export default App

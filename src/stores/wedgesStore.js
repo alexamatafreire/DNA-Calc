@@ -20,7 +20,8 @@ export const useWedgeStore = create()(
             updateTeammate2WeaponWedges: (slot, wedge) => set((state) => ({teammate2WeaponWedges: {...state.teammate2WeaponWedges, [slot]: wedge}}))
         }),
         {
-            name: 'dnacalc-wedge-storage'
+            name: 'dnacalc-wedge-storage',
+            storage: createJSONStorage(() => sessionStorage)
         }
     )
 )

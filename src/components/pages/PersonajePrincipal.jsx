@@ -1,8 +1,10 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DemonWedges from '../DemonWedges';
 import { useWedgeStore } from '../../stores/wedgesStore';
 import { useCharacterStore } from '../../stores/characterStore';
+import { useUserStore } from '../../stores/userStore';
+import axios from "axios";
 
 const PersonajePrincipal = ({ wedgesList, personajes}) => {
   const slots = useWedgeStore((state) => state.mainCharWedges);
@@ -21,7 +23,19 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
   const setListaBuffs = useCharacterStore((state) => state.setListaBuffs);
   const buffStacks = useCharacterStore((state) => state.buffStacks);
   const setBuffStacks = useCharacterStore((state) => state.setBuffStacks);
-  const [favoritos, setFavoritos] = useState([]);
+  const username = useUserStore((state) => state.username);
+  const favoritos = useUserStore((state) => state.favoriteList);
+  const setFavoritos = useUserStore((state) => state.setFavoriteList);
+
+  useEffect(() => {
+    setFavoritos(tempFavs);
+  }, [])
+  
+
+  useEffect(() => {
+    guardarFavoritos(favoritos);
+  }, [favoritos])
+  
 
   const handleBuffs = (e) => {
     setListaBuffs(e.target.checked ? [...listaBuffs, e.target.name] : listaBuffs.filter((buff) => buff !== e.target.name));
@@ -49,17 +63,17 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
           <div className='character-selector-fav'>
             <select className="form-select border-2" name="personajeSelec" value={personajeSeleccionadoMain} onChange={e => setPersonajeSeleccionadoMain(e.target.value)}>
               <optgroup label='Favorites'>
-                {favoritos.sort().map((nombre) => (
+                {favoritos?.sort().map((nombre) => (
                   <option value={nombre} key={"favs_"+nombre}>{nombre}</option>
                 ))}
               </optgroup>
               <optgroup label='Non-favorites'>
-                {Object.keys(personajes).filter((personaje) => !favoritos.includes(personaje)).sort().map((nombre) => (
+                {Object.keys(personajes).filter((personaje) => !favoritos?.includes(personaje)).sort().map((nombre) => (
                   <option value={nombre} key={nombre}>{nombre}</option>
                 ))}
               </optgroup>
             </select>
-            <i className={`estrella-fav bi ${favoritos.includes(personajeSeleccionadoMain) ? "bi-star-fill" : "bi-star"}`} onClick={handleFavoritos}></i>
+            {username != "none" && <i className={`estrella-fav bi ${favoritos?.includes(personajeSeleccionadoMain) ? "bi-star-fill" : "bi-star"}`} onClick={handleFavoritos}></i>}
           </div>
           <div className="">
             <div className="titulo-slider justificar-izquierda">Level</div>
@@ -106,5 +120,41 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
     </div>
   )
 }
+
+const guardarFavoritos = async (favoritos) => {
+  try {
+    await axios.post(
+      "http://localhost:3001/savefavs",
+      {
+        favoritos
+      },
+      {
+        withCredentials: true
+      }
+    );
+    console.log("Favoritos guardados");
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getFavoritos = async () => {
+  try {
+    const res = await axios.get(
+      "http://localhost:3001/getfavs",
+      {
+        withCredentials: true
+      }
+    );
+    console.log(res.data.favorites);
+    return res.data.favorites;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+let tempFavs = [];
+tempFavs = await getFavoritos();
 
 export default PersonajePrincipal
