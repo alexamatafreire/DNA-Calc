@@ -18,6 +18,7 @@ const DamageTable = ({wedgesList, personajes, armas}) => {
     const statsPersonaje = {
         "ATK": ((personaje?.ATK * nivelMult[nivelMain-1] * (1+(mejoras["ATK"] ?? 0))) + (mejoras["Flat ATK"] ?? 0)) * (1+(mejoras["Elemental ATK"] ?? 0)),
         "HP": personaje?.HP * nivelMult[nivelMain-1] * (1+(mejoras["HP"] ?? 0)),
+        "DEF": personaje?.DEF * nivelMult[nivelMain-1] * (1+(mejoras["DEF"] ?? 0)),
         "Sanity" : personaje?.Sanity * (1+(mejoras["Sanity"] ?? 0)),
         "Skill Intensity": mejoras["Skill Intensity"],
         "Skill DMG": mejoras["Skill DMG"],
@@ -27,6 +28,8 @@ const DamageTable = ({wedgesList, personajes, armas}) => {
         "Morale": mejoras["Morale"],
         "PEN": mejoras["PEN"],
         "DMG Boost": mejoras["DMG Boost"],
+        "DMG Bonus": mejoras["DMG Bonus"],
+        "Final DMG Mult": mejoras["Final DMG Mult"],
         "Current HP": 1
     }
     const niveles = {"e" : nivelEMain, "q" : nivelQMain, "pasiva" : nivelPasivaMain};
@@ -52,12 +55,36 @@ const DamageTable = ({wedgesList, personajes, armas}) => {
                         <td>{!isNaN(statsPersonaje["HP"]) && Math.round(statsPersonaje["HP"]??0)}</td>
                     </tr>
                     <tr>
+                        <td>DEF</td>
+                        <td>{!isNaN(statsPersonaje["DEF"]) && Math.round(statsPersonaje["DEF"]??0)}</td>
+                    </tr>
+                    <tr>
                         <td>Sanity</td>
                         <td>{!isNaN(statsPersonaje["Sanity"]) && Math.round(statsPersonaje["Sanity"]??0)}</td>
                     </tr>
                     <tr>
                         <td>Skill Intensity</td>
                         <td>{Math.round((statsPersonaje["Skill Intensity"]?? 0)*100+100)}%</td>
+                    </tr>
+                    <tr>
+                        <td>Skill Range</td>
+                        <td>{!isNaN(statsPersonaje["Skill Range"]) && Math.round((statsPersonaje["Skill Range"]??0)*100+100)}</td>
+                    </tr>
+                    <tr>
+                        <td>Skill Efficiency</td>
+                        <td>{!isNaN(statsPersonaje["Skill Efficiency"]) && Math.round((statsPersonaje["Skill Efficiency"]??0)*100+100)}</td>
+                    </tr>
+                    <tr>
+                        <td>Skill Duration</td>
+                        <td>{!isNaN(statsPersonaje["Skill Duration"]) && Math.round((statsPersonaje["Skill Duration"]??0)*100+100)}</td>
+                    </tr>
+                    <tr>
+                        <td>Morale</td>
+                        <td>{!isNaN(statsPersonaje["Morale"]) && Math.round((statsPersonaje["Morale"]??0)*100+100)}</td>
+                    </tr>
+                    <tr>
+                        <td>PEN</td>
+                        <td>{!isNaN(statsPersonaje["PEN"]) && Math.round((statsPersonaje["PEN"]??0)*100+100)}</td>
                     </tr>
                 </tbody>
             </table>
