@@ -132,5 +132,104 @@
             "Sanity" : 0.24,
             "Skill Intensity" : 0.24
         }
+    },
+    "wedge11": {
+        "titulo" : "Covenanter's",
+        "nombre" : "Blaze Eternity",
+        "imagen": "T_Mod_Mephisto01_Orange.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "ATK" : 0.48,
+            "Skill Duration" : 0.18
+        }
+    },
+    "wedge12": {
+        "titulo" : "Covenanter's",
+        "nombre" : "Blaze Eternity",
+        "imagen": "T_Mod_Mephisto01_Orange.png",
+        "tier" : 5,
+        "nivelmax" : 10,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "ATK" : 0.88,
+            "Skill Duration" : 0.33
+        }
+    },
+    "wedge13": {
+        "titulo" : "Covenanter's",
+        "nombre" : "Nirvana Volition",
+        "imagen": "T_Mod_Mephisto01_Orange.png",
+        "tier" : 5,
+        "nivelmax" : 10,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "HP" : 0.88,
+            "Skill Intensity" : 0.44
+        }
+    },
+    "wedge14": {
+        "titulo" : "Covenanter's",
+        "nombre" : "Scorch",
+        "imagen": "T_Mod_Mephisto01_Orange.png",
+        "tier" : 5,
+        "nivelmax" : 10,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "ATK" : 1.76
+        }
+    },
+    "wedge15": {
+        "titulo" : "Feathered Serpent's",
+        "nombre" : "Morale",
+        "imagen": "T_Mod_FeatheredSnake01.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "Morale" : 0.36
+        }
+    },
+    "wedge16": {
+        "titulo" : "Feathered Serpent's",
+        "nombre" : "Volition",
+        "imagen": "T_Mod_FeatheredSnake01.png",
+        "tier" : 4,
+        "nivelmax" : 5,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "Volition" : 0.48
+        }
+    },
+    "wedge17": {
+        "titulo" : "Feathered Serpent's",
+        "nombre" : "Morale",
+        "imagen": "T_Mod_FeatheredSnake01.png",
+        "tier" : 5,
+        "nivelmax" : 10,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "Morale" : 0.66
+        }
+    },
+    "wedge18": {
+        "titulo" : "Feathered Serpent's",
+        "nombre" : "Volition",
+        "imagen": "T_Mod_FeatheredSnake01.png",
+        "tier" : 5,
+        "nivelmax" : 10,
+        "multiple" : true,
+        "tipo" : "lumino",
+        "buffs" : {
+            "Volition" : 0.88
+        }
     }
 }

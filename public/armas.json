@@ -16,7 +16,7 @@
                 "id" : "Eternal Farewell_1",
                 "nombre" : "Skill Intensity",
                 "stacks" : [0,3],
-                "desc" : "When an Electro character uses their Ultimate Skill, grants (+25%, 30%, 35%, 40%, 45%, 50%) Skill Intensity for 12s (up to 3 stacks).",
+                "desc" : "When an Electro character uses their Ultimate Skill, grants (+25%, +30%, +35%, +40%, +45%, +50%) Skill Intensity for 12s (up to 3 stacks).",
                 "target" : "self",
                 "effects" : {
                     "Skill Intensity" : 0.25
@@ -31,7 +31,7 @@
                 "id" : "Wanewraith_0",
                 "nombre" : "Skill Intensity",
                 "stacks" : false,
-                "desc" : "Skill Intensity (+24%, 28.8%, 33.6%, 38.4%, 43.2%, 48%).",
+                "desc" : "Skill Intensity (+24%, +28.8%, +33.6%, +38.4%, +43.2%, +48%).",
                 "target" : "self",
                 "effects" : {
                     "Skill Intensity" : 0.24
@@ -46,7 +46,7 @@
                 "id" : "Soulrend_0",
                 "nombre" : "Skill Range",
                 "stacks" : false,
-                "desc" : "Skill Range (+36%, 43.2%, 50.4%, 57.6%, 64.8%, 72%).",
+                "desc" : "Skill Range (+36%, +43.2%, +50.4%, +57.6%, +64.8%, +72%).",
                 "target" : "self",
                 "effects" : {
                     "Skill Range" : 0.36
@@ -61,7 +61,7 @@
                 "id" : "Embla Inflorescence_0",
                 "nombre" : "Skill Range",
                 "stacks" : false,
-                "desc" : "Skill Range (+30%, 36%, 42%, 48%, 54%, 60%).",
+                "desc" : "Skill Range (+30%, +36%, +42%, +48%, +54%, +60%).",
                 "target" : "self",
                 "effects" : {
                     "Skill Range" : 0.3
@@ -71,10 +71,335 @@
                 "id" : "Embla Inflorescence_1",
                 "nombre" : "Skill Damage",
                 "stacks" : false,
-                "desc" : "When a Lumino character deals Skill Damage, grants (+35%, 42%, 49%, 56%, 63%, 70%) Skill DMG for 6s.",
+                "desc" : "When a Lumino character deals Skill Damage, grants (+35%, +42%, +49%, +56%, +63%, +70%) Skill DMG for 6s.",
                 "target" : "self",
                 "effects" : {
                     "Skill DMG" : 0.35
+                }
+            }
+        ]
+    },
+    "Arclight Apocalypse" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Arclight Apocalypse_0",
+                "nombre" : "Skill Duration",
+                "stacks" : false,
+                "desc" : "Skill Duration (+15%, +18%, +21%, +24%, +27%, +30%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.15
+                }
+            }
+        ]
+    },
+    "Blade Amberglow" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Blade Amberglow_0",
+                "nombre" : "ATK",
+                "stacks" : false,
+                "desc" : "ATK (+60%, +72%, +84%, +96%, +108%, +120%).",
+                "target" : "self",
+                "effects" : {
+                    "ATK" : 0.6
+                }
+            }
+        ]
+    },
+    "Destructo" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Destructo_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+36%, +43.2%, +50.4%, +57.6%, +64.8%, +72%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.36
+                }
+            }
+        ]
+    },
+    "Dreamweaver's Feather" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Dreamweaver's Feather_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+30%, +36%, +42%, +48%, +54%, +60%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.3
+                }
+            }
+        ]
+    },
+    "Ephemeral Lumina" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Ephemeral Lumina_0",
+                "nombre" : "Skill Duration",
+                "stacks" : false,
+                "desc" : "Skill Duration (+15%, +18%, +21%, +24%, +27%, +30%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.15
+                }
+            },
+            {
+                "id" : "Ephemeral Lumina_1",
+                "nombre" : "ATK",
+                "stacks" : [0,9],
+                "desc" : "When a Lumino character triggers Bonus Effect, grants 1 stack that increases ATK by (+17.5%, +21%, +24.5%, +28%, +31.5%, +35%) for 24s, up to 9 stacks.",
+                "target" : "self",
+                "effects" : {
+                    "ATK" : 0.175
+                }
+            }
+        ]
+    },
+    "Excresduo" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Excresduo_0",
+                "nombre" : "Skill Intensity",
+                "stacks" : false,
+                "desc" : "Skill Intensity (+24%, +28.8%, +33.6%, +38.4%, +43.2%, +48%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.24
+                }
+            }
+        ]
+    },
+    "Fathomless Sharkgaze" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Fathomless Sharkgaze_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+36%, +43.2%, +50.4%, +57.6%, +64.8%, +72%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.36
+                }
+            }
+        ]
+    },
+    "Halcyon Gracefall" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Halcyon Gracefall_0",
+                "nombre" : "Skill Intensity",
+                "stacks" : false,
+                "desc" : "Skill Intensity (+20%, +24%, +28%, +32%, +36%, +40%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.2
+                }
+            }
+        ]
+    },
+    "Ingenious Tactics" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Ingenious Tactics_0",
+                "nombre" : "DEF",
+                "stacks" : false,
+                "desc" : "DEF (+50, +60%, +70%, +80%, +90%, +100%).",
+                "target" : "self",
+                "effects" : {
+                    "DEF" : 0.5
+                }
+            }
+        ]
+    },
+    "Osteobreaker" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Osteobreaker_0",
+                "nombre" : "Skill Duration",
+                "stacks" : false,
+                "desc" : "Skill Duration (+18%, +21.6%, +25.2%, +28.8%, +32.4%, +36%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.18
+                }
+            }
+        ]
+    },
+    "Punitive Inferno" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Punitive Inferno_0",
+                "nombre" : "HP",
+                "stacks" : false,
+                "desc" : "Max HP (+50, +60%, +70%, +80%, +90%, +100%).",
+                "target" : "self",
+                "effects" : {
+                    "HP" : 0.5
+                }
+            },
+            {
+                "id" : "Punitive Inferno_1",
+                "nombre" : "Skill Duration",
+                "stacks" : [0,3],
+                "desc" : "When a Pyro character takes damage, grants (+15%, +18%, +21%, +24%, +27%, +30%) Skill Duration for 8s, up to 3 stacks.",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.15
+                }
+            }
+        ]
+    },
+    "Pyrothirst" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Pyrothirst_0",
+                "nombre" : "Skill Duration",
+                "stacks" : false,
+                "desc" : "Skill Duration (+18%, +21.6%, +25.2%, +28.8%, +32.4%, +36%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.18
+                }
+            }
+        ]
+    },
+    "Rendhusk" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Rendhusk_0",
+                "nombre" : "ATK",
+                "stacks" : false,
+                "desc" : "ATK (+60%, +72%, +84%, +96%, +108%, +120%).",
+                "target" : "self",
+                "effects" : {
+                    "ATK" : 0.6
+                }
+            }
+        ]
+    },
+    "Screamshot" : {
+        "tipo" : "ranged",
+        "buffs" : [
+            {
+                "id" : "Screamshot_0",
+                "nombre" : "Skill Duration",
+                "stacks" : false,
+                "desc" : "Skill Duration (+18%, +21.6%, +25.2%, +28.8%, +32.4%, +36%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.18
+                }
+            }
+        ]
+    },
+    "Siren's Kiss" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Siren's Kiss_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+30%, +36%, +42%, +48%, +54%, +60%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.3
+                }
+            }
+        ]
+    },
+    "Tetherlash" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Tetherlash_0",
+                "nombre" : "Skill Duration",
+                "stacks" : false,
+                "desc" : "Skill Duration (+18%, +21.6%, +25.2%, +28.8%, +32.4%, +36%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Duration" : 0.18
+                }
+            }
+        ]
+    },
+    "Undying Oneiros" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Undying Oneiros_0",
+                "nombre" : "HP",
+                "stacks" : false,
+                "desc" : "Max HP (+50, +60%, +70%, +80%, +90%, +100%).",
+                "target" : "self",
+                "effects" : {
+                    "HP" : 0.5
+                }
+            },
+            {
+                "id" : "Undying Oneiros_1",
+                "nombre" : "HP",
+                "stacks" : [0,10],
+                "desc" : "When this weapon triggers a bonus effect on hit, grants (+8.6%, +10.32%, +12.04%, +13.76%, +15.48%, +17.2%) Max HP for 15s ,up to 10 stacks.",
+                "target" : "self",
+                "effects" : {
+                    "HP" : 0.086
+                }
+            }
+        ]
+    },
+    "Venial Sinscales" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Venial Sinscales_0",
+                "nombre" : "Skill Intensity",
+                "stacks" : false,
+                "desc" : "Skill Intensity (+20%, +24%, +28%, +32%, +36%, +40%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Intensity" : 0.2
+                }
+            },
+            {
+                "id" : "Venial Sinscales_1",
+                "nombre" : "Skill DMG",
+                "stacks" : [0,5],
+                "desc" : "When an Electro Character deals damage using a Plunging Attack with this weapon, grants self and Electro allies (+5%, +6%, +7%, +8%, +9%, +10%) Skill DMG for 10s, up to 5 stacks.",
+                "target" : "all",
+                "effects" : {
+                    "Skill DMG" : 0.05
+                }
+            }
+        ]
+    },
+    "Withershade" : {
+        "tipo" : "melee",
+        "buffs" : [
+            {
+                "id" : "Withershade_0",
+                "nombre" : "Skill Range",
+                "stacks" : false,
+                "desc" : "Skill Range (+36%, +43.2%, +50.4%, +57.6%, +64.8%, +72%).",
+                "target" : "self",
+                "effects" : {
+                    "Skill Range" : 0.36
                 }
             }
         ]
