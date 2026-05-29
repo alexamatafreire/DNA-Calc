@@ -458,9 +458,9 @@
         "Sanity" : 150,
         "habilidades" : {
             "e" : {
-                "nombre" : "On a Warm Afternoon",
-                "tipo" : "DMG",
-                "descripcion" : ["On a Warm Afternoon", "Deals Lumino Damage to enemies in front and reduces their Movement Speed. When [Boisterous Tea Party] is active, using this skill relocates the field to user's position, expands its range to match [Boisterous Tea Party], and increases its damage."],
+                "nombre" : "Subcelestial Solace",
+                "tipo" : "Summon",
+                "descripcion" : ["Subcelestial Solace", "Summons 1 [Yunchi]. A Maximum of 2 [Yunchi] can exist at the same time.", "[Yunchi]", "Inherits 100% of Fushu's stats and deals Hydro Damage to the nearest 5 enemies once every second.\n[Yunchi] restores HP and Sanity for nearby teammates once every 3s."],
                 "estadisticas" : [
                     {
                         "nombre" : "misc",
@@ -468,47 +468,53 @@
                         {
                             "nombre" : "Sanity Cost",
                             "patron" : "%r1",
-                            "valor" : [15],
+                            "valor" : [50],
                             "daño" : false,
                             "escala" : [["Skill Efficiency", -1]]
                         },
                         {
-                            "nombre" : "Damage",
+                            "nombre" : "Summon DMG",
                             "patron" : "%p1",
-                            "valor" : [[0.45, 1.26]],
+                            "valor" : [[2.26, 6.67]],
                             "daño" : true,
-                            "calcs" : [{"value": [0.45, 1.26], "scale" : ["Skill Intensity", "ATK"]}],
+                            "calcs" : [{"value": [2.26, 6.67], "scale" : ["Skill Intensity", "ATK"]}],
                             "escala" : [["Skill Intensity", 1]]
                         },
                         {
-                            "nombre" : "Damage Radius",
+                            "nombre" : "Summon Effect Radius",
                             "patron" : "%m1",
-                            "valor" : [6],
+                            "valor" : [10],
                             "daño" : false,
                             "escala" : [["Skill Range", 1]]
                         },
                         {
-                            "nombre" : "Damage Dealt in [Boisterous Tea Party]",
-                            "patron" : "%p1",
-                            "valor" : [[0.59, 1.85]],
-                            "daño" : true,
-                            "calcs" : [{"value": [0.59, 1.85], "scale" : ["Skill Intensity", "ATK"]}],
+                            "nombre" : "Summon Duration",
+                            "patron" : "%s1",
+                            "valor" : [10],
+                            "daño" : false,
+                            "escala" : [["Skill Duration", 1]]
+                        },
+                        {
+                            "nombre" : "Summon Healing",
+                            "patron" : "%p1 ATK + %r2",
+                            "valor" : [[0.006, 0.015], 5],
+                            "daño" : false,
                             "escala" : [["Skill Intensity", 1]]
                         },
                         {
-                            "nombre" : "Movement Speed Decrease Duration",
-                            "patron" : "%s1",
+                            "nombre" : "Sanity Recovery",
+                            "patron" : "%n1",
                             "valor" : [12],
                             "daño" : false,
-                            "escala" : [["Skill Duration", 1]]
+                            "escala" : []
                         }]
                     }
                 ]
             },
             "q" : {
-                "nombre" : "Let the Tea Party Begin!",
+                "nombre" : "Holistic Harmony",
                 "tipo" : "Buff",
-                "descripcion" : ["Let the Tea Party Begin!", "Creates a [Boisterous Tea Party] field in front of Fina.[Boisterous Tea Party] continously consumes Sanity and ends when Sanity drops to 0 or when this skill is held.\n\nDuring [Boisterous Tea Party], using the skill again will switch the field effects in order of the [Tea Party Guests] - [Nightingale], [Hound], [Unicorn], and [Butterfly]. Using the skill again outside the range of [Boisterous Tea Party] will relocate it to Fina's current location.", "Boisterous Tea Party", "Generates an elemental field that corresponds to the element type of the [Tea Party Guests], with [Nightingale] for Hydro, [Hound] for Pyro, [Unicorn] for Electro, [Butterfly] for Anemo.\n\nWhen the field appears or its element shifts, Fina and allies gain bonus elemental damage matching the field type. While [Boisterous Tea Party] is active, the field deals elemental damage to enemies within range every 2 seconds."],
+                "descripcion" : ["Holistic Harmony", "Deals Hydro Damage to nearby enemies. Grants Fushu an Ultra Shield and Increases her ATK Speed. In addition, Fushu's nearby teammates also receive an Ultra Shield and gain [Nine-Needle Therapy].", "Nine-Needle Theraphy", "Increases Skill Damage by a percentage of [Fushu]'s Skill Damage."],
                 "estadisticas" : [
                     {
                         "nombre" : "misc", 
@@ -516,81 +522,87 @@
                         {
                             "nombre" : "Sanity Cost",
                             "patron" : "%r1",
-                            "valor" : [10],
+                            "valor" : [75],
                             "daño" : false,
                             "escala" : [["Skill Efficiency", -1]]
                         },
                         {
-                            "nombre" : "Sanity Cost per second",
-                            "patron" : "%r1",
-                            "valor" : [12],
-                            "daño" : false,
-                            "escala" : [["Skill Efficiency", -1], ["Skill Duration", -1]]
+                            "nombre" : "[Holistic Harmony] DMG",
+                            "patron" : "%p1",
+                            "valor" : [[5.24, 15.68]],
+                            "daño" : true,
+                            "calcs" : [{"value": [5.24, 15.68], "scale" : ["Skill Intensity", "ATK"]}],
+                            "escala" : [["Skill Intensity", -1]]
                         },
                         {
-                            "nombre" : "[Boisterous Tea Party] Effect Radius",
+                            "nombre" : "[Holistic Harmony] DMG Radius",
                             "patron" : "%m1",
-                            "valor" : [10],
+                            "valor" : [6],
                             "daño" : false,
                             "escala" : [["Skill Range", 1]]
                         },
                         {
-                            "nombre" : "DoT",
-                            "patron" : "%p1",
-                            "valor" : [[3.49, 10.6]],
-                            "daño" : true,
-                            "calcs" : [{"value": [3.49, 10.6], "scale" : ["Skill Intensity", "ATK"]}],
+                            "nombre" : "Ultra Shield",
+                            "patron" : "%p1 ATK + %r2",
+                            "valor" : [[0.027, 0.081], 80],
+                            "daño" : false,
                             "escala" : [["Skill Intensity", 1]]
                         },
                         {
-                            "nombre" : "Additional DMG",
+                            "nombre" : "ATK SPD Boost",
                             "patron" : "%p1",
-                            "valor" : [[0.051, 0.15]],
+                            "valor" : [[0.25, 0.70]],
+                            "daño" : false,
+                            "escala" : []
+                        }]
+                    },
+                    {
+                        "nombre": "Nine-Needle Therapy",
+                        "lineas": [
+                        {
+                            "nombre" : "Skill Intensity Increase",
+                            "patron" : "%p1 x Skill Intensity",
+                            "valor" : [[0.12, 0.30]],
                             "daño" : false,
                             "escala" : []
                         },
                         {
-                            "nombre" : "Additional DMG Duration",
+                            "nombre" : "Skill Intensity Boost Cap",
+                            "patron" : "%p1",
+                            "valor" : [1.2],
+                            "daño" : false,
+                            "escala" : []
+                        },
+                        {
+                            "nombre" : "Duration",
                             "patron" : "%s1",
                             "valor" : [12],
                             "daño" : false,
                             "escala" : [["Skill Duration", 1]]
-                        }]
+                        }
+                        ]
                     }
                 ]
             },
             "pasiva" : {
-                "nombre" : "Bad Sorcerers Hate Sunlight!",
+                "nombre" : "Archaeus Revival",
                 "tipo" : "Passive",
-                "descripcion" : ["Bad Sorcerers Hate Sunlight!", "Grants bonus Lumino Damage that lasts throughout the battle. Each time [On a Warm Afternoon] is used, grants 6 stacks of [Taleweaver Quill]. While [Boisterous Tea Party] is active, generates 1 stack of [Taleweaver Quill] per second, up to 30 stacks.", "Taleweaver Quill", "Deals additional Lumino Damage"],
+                "descripcion" : ["Archaeus Revival", "Using a Combat Skill or Ultimate Skill (by the user or nearby allies) grants 1 stack Skill Speed increase, up to 2 stacks. Remaining time refreshes each time a new stack is gained."],
                 "estadisticas" : [
                     {
                         "nombre" : "misc", 
                         "lineas" : [
                         {
-                            "nombre" : "Additional DMG Throughout the Battle",
+                            "nombre" : "Skill SPD Boost per stack",
                             "patron" : "%p1",
-                            "valor" : [[0.06, 0.15]],
-                            "daño" : true,
-                            "calcs" : [{"value": [0.06, 0.15], "scale" : ["Skill Intensity", "ATK"]}],
-                            "escala" : [["Skill Intensity", 1]]
-                        }]
-                    },
-                    {
-                        "nombre": "Taleweaver Quill",
-                        "lineas": [
-                        {
-                            "nombre" : "Each Stack's Additional DMG",
-                            "patron" : "%p1",
-                            "valor" : [[0.0037, 0.01]],
-                            "daño" : true,
-                            "calcs" : [{"value": [0.0037, 0.01], "scale": ["Skill Intensity", "ATK"]}],
-                            "escala" : [["Skill Intensity", 1]]
+                            "valor" : [[0.039, 0.12]],
+                            "daño" : false,
+                            "escala" : []
                         },
                         {
-                            "nombre" : "Duration",
+                            "nombre" : "Skill SPD Boost Duration",
                             "patron" : "%s1",
-                            "valor" : [15],
+                            "valor" : [6],
                             "daño" : false,
                             "escala" : [["Skill Duration", 1]]
                         }
@@ -638,6 +650,26 @@
                 "target" : "self",
                 "effects" : {
                     "Skill Intensity" : 0.12
+                }
+            },
+            {
+                "id" : "Fushu_4",
+                "nombre" : "Nine-Needle Therapy Skill Intensity Increase",
+                "stacks" : [0,120],
+                "desc" : "Increases Skill Damage by a percentage of [Fushu]'s Skill Damage.",
+                "target" : "all",
+                "effects" : {
+                    "Skill Intensity" : 0.01
+                }
+            },
+            {
+                "id" : "Fushu_5",
+                "nombre" : "Intron 5",
+                "stacks" : [0,3],
+                "desc" : "Increase the stack cap of [Archaeus Revival] to 3, and grants 12% Morale Boost per Stack.",
+                "target" : "all",
+                "effects" : {
+                    "Morale" : 0.12
                 }
             }
         ]
