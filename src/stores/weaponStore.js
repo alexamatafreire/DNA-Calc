@@ -6,7 +6,7 @@ export const useWeaponStore = create()(
         (set) => ({
             melee: "Eternal Farewell",
             meleeSmelt: 0,
-            ranged: "Eternal Farewell",
+            ranged: "Embla Inflorescence",
             rangedSmelt: 0,
             meleeBuffs: [],
             meleeBuffStacks: {},
