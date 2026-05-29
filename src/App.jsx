@@ -103,7 +103,7 @@ function App() {
 const getUserAuth = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:3001/getuser",
+      "http://192.168.56.101:3001/getuser",
       {
         withCredentials: true
       }

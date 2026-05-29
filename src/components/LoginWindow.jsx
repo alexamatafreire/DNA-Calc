@@ -40,7 +40,7 @@ const LoginWindow = ({ setLoginVisible }) => {
 const login = async (email, pass, setLoginVisible) => {
   try {
     const res = await axios.post(
-      "http://localhost:3001/login",
+      "http://192.168.56.101:3001/login",
       {
         email: email,
         pass: pass
@@ -60,7 +60,7 @@ const login = async (email, pass, setLoginVisible) => {
 const registerfunc = async (email, pass, name, setRegister) => {
   try {
     const res = await axios.post(
-      "http://localhost:3001/register",
+      "http://192.168.56.101:3001/register",
       {
         email: email,
         pass: pass,

@@ -124,7 +124,7 @@ const PersonajePrincipal = ({ wedgesList, personajes}) => {
 const guardarFavoritos = async (favoritos) => {
   try {
     await axios.post(
-      "http://localhost:3001/savefavs",
+      "http://192.168.56.101:3001/savefavs",
       {
         favoritos
       },
@@ -141,7 +141,7 @@ const guardarFavoritos = async (favoritos) => {
 const getFavoritos = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:3001/getfavs",
+      "http://192.168.56.101:3001/getfavs",
       {
         withCredentials: true
       }
